@@ -10,43 +10,26 @@
   <title>Document</title>
 
   <style type="text/css">
+    .table-responsive {
+      height: 400px;
+      overflow: scroll;
+    }
 
-
-
-
-
-
-.table-responsive{
-  height:400px;  
-  overflow:scroll;
-}
- thead tr:nth-child(1) th{
-    background: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
+    thead tr:nth-child(1) th {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
   </style>
 </head>
 
 <body>
   <div class="table-responsive">
-    <table class="table table-fixed ">
+    <table id="tabla-clasificacion" class="table table-fixed ">
       <thead class="thead-dark">
         <tr>
-          <th scope="col" </th>
+          <th scope="col"></th>
           <th style="text-align: center; vertical-align: middle;" scope="col">Equipo</th>
           <th style="text-align: center; vertical-align: middle;" scope="col">Puntos</th>
           <th style="text-align: center; vertical-align: middle;" scope="col">Partidos jugados</th>
@@ -56,234 +39,13 @@
           <th style="text-align: center; vertical-align: middle;" scope="col">Diferencia de goles</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">1</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/madrid.png"
-              alt="Real Madrid" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">2</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/barcelona.png" alt="FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">3</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/sevilla.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">4</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/atletico.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">5</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/betis.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">6</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/real-sociedad.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">7</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/villareal.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">8</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/athletic.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">9</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/osasuna.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">10</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/valencia.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">11</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/celta.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">12</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/rayo.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">13</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/espanyol.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">14</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/elche.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">15</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/getafe.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">16</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/cadiz.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">17</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/granada.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">18</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50"
-              src="res/escudos/la-liga/mallorca.png" alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">19</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/levante.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-        <tr>
-          <th style="text-align: center; vertical-align: middle;" scope="row">20</th>
-          <td style="text-align: center; vertical-align: middle;"><img height="50" src="res/escudos/la-liga/alaves.png"
-              alt="Escudo del FC Barcelona" /></td>
-          <td style="text-align: center; vertical-align: middle;">81</td>
-          <td style="text-align: center; vertical-align: middle;">35</td>
-          <td style="text-align: center; vertical-align: middle;">25</td>
-          <td style="text-align: center; vertical-align: middle;">6</td>
-          <td style="text-align: center; vertical-align: middle;">4</td>
-          <td style="text-align: center; vertical-align: middle;">43</td>
-        </tr>
-
+      <tbody id="equipos">
       </tbody>
     </table>
   </div>
 
 
-
+<script src="teams.js"></script>
 </body>
 
 </html>
