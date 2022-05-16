@@ -1,4 +1,9 @@
-fetch('http://api.football-data.org/v2/competitions/PD/standings', {
+var script_tag = document.getElementById('table-loader')
+var competition = script_tag.getAttribute("competition");
+
+fetch('http://api.football-data.org/v2/competitions/' +
+       competition +
+      '/standings', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
