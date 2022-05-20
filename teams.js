@@ -1,5 +1,5 @@
-var script_tag = document.getElementById('table-loader')
-var competition = script_tag.getAttribute("competition");
+const script_tag = document.getElementById('table-loader')
+const competition = script_tag.getAttribute("competition");
 
 fetch('http://api.football-data.org/v2/competitions/' +
        competition +
