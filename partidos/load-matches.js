@@ -55,6 +55,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
             const li3 = document.createElement('li')
             li3.className = 'list-group-item border-0'
+            li3.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
             li3.textContent = partido.homeTeam.name
             ul2.appendChild(li3)
 
@@ -105,6 +106,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
             li6.appendChild(image2)
 
             const li7 = document.createElement('li')
+            li7.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
             li7.className = 'list-group-item border-0'
             li7.textContent = partido.awayTeam.name
             ul3.appendChild(li7)
@@ -135,6 +137,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
             footer.appendChild(fecha)
 
         });
+        document.getElementById("spinner").remove()
     })
 
 

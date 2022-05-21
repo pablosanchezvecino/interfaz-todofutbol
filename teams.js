@@ -28,6 +28,9 @@ fetch('http://api.football-data.org/v2/competitions/' +
             imagen.height = 50
             escudo.appendChild(imagen)
 
+            const nombreEquipo = escudo.appendChild(document.createElement('div'))
+            nombreEquipo.textContent= equipo.team.name
+
             const puntos = fila.appendChild(document.createElement('td'))
             puntos.style = style
             puntos.textContent = equipo.points
@@ -52,4 +55,5 @@ fetch('http://api.football-data.org/v2/competitions/' +
             diferencia.style = style
             diferencia.textContent = equipo.goalDifference
         });
+        document.getElementById("spinner").remove()
     })
