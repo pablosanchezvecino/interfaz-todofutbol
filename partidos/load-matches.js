@@ -41,6 +41,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
             ul1.appendChild(li1)
 
             const ul2 = document.createElement('ul')
+            ul2.title = partido.homeTeam.name
             ul2.className = 'list-group'
             li1.appendChild(ul2)
 
@@ -94,6 +95,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
             const ul3 = document.createElement('ul')
             ul3.className = 'list-group'
+            ul3.title = partido.awayTeam.name
             li5.appendChild(ul3)
 
             const li6 = document.createElement('li')
