@@ -1,6 +1,13 @@
 const script_tag = document.getElementById('table-loader')
 const competition = script_tag.getAttribute("competition");
+
 var pos = 1
+
+const asistentes = document.getElementById("asistentes")
+const porteros = document.getElementById("porteros")
+asistentes.style.visibility = 'hidden'
+porteros.style.visibility = 'hidden'
+
 fetch('http://api.football-data.org/v2/competitions/' +
     competition +
     '/scorers', {
@@ -67,7 +74,11 @@ fetch('http://api.football-data.org/v2/competitions/' +
 
 
         });
-       // document.getElementById("spinner").remove()
+        asistentes.style.visibility = 'visible'
+        porteros.style.visibility = 'visible'
+        document.getElementById("spinner").remove()
+        
+
     })
 
 
