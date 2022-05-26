@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <title>LaLiga - Partidos</title>
     <link rel="icon" href="../res/icon.png">
 
-    <style type="text/css">
+    <style>
         .card-footer {
             background-color: black;
             color: white;
@@ -25,18 +25,18 @@
 
 <body>
 
-    
+
 
 
     <div class="container-fluid">
 
         <div id="cabeceraCompeticion" class="row p-3 border-bottom">
-            <img class="col-auto" src="../res/ligas/laliga.png" height="64" width="64" class="me-2">
+            <img class="col-auto me-2" src="../res/ligas/laliga.png" alt="Logo de LaLiga" height="64" width="64">
             <div class="container col">
-              <h5 class="mb-0 text-muted">Primera División Española</h4>
+                <h4 class="mb-0 text-muted">Primera División Española</h4>
                 <h1>LaLiga</h1>
             </div>
-          </div>
+        </div>
 
         <br>
 
@@ -46,11 +46,25 @@
                     <h1>Clasificación</h1>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                    <h1>Partidos</h1>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">
+                    <h1 style="display:inline">Partidos</h1>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">
+                            <h4>Partidos recientes</h4>
+                        </a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">
+                            <h4>Partidos próximos</h4>
+                        </a></li>
+                </ul>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link link-dark" href="../top-jugadores/laliga.html">
                     <h1>Top jugadores</h1>
