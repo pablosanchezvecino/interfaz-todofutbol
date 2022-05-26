@@ -120,24 +120,25 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
 
             const footer = document.createElement('div')
-            footer.className = 'card-footer'
+            footer.className = 'card-footer'            
+
             card.appendChild(footer)
 
             const fecha = document.createElement('h5')
-
             const utcDate = new Date(partido.utcDate)
             const date = new Date(utcDate);
-
-
-
-
-
-
-
             fecha.textContent = date.toLocaleString().slice(0, -3)
 
             footer.appendChild(fecha)
 
+            var link = document.createElement('button');
+            link.textContent = "Mirar los detalles del partido";
+            link.ariaLabel = "Mirar los detalles del partido";
+            link.addEventListener('click', function() {
+                location.href = '../detalles-partidos.html'
+            }, false);
+
+            footer.appendChild(link);
         });
         document.getElementById("spinner").remove()
     })
