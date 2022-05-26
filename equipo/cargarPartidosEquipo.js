@@ -1,148 +1,106 @@
 const script_tag = document.getElementById('matches-loader')
+const equipoId = script_tag.getAttribute("teamId");
 const competition = script_tag.getAttribute("competition");
 
-
-
-fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?status=FINISHED&dateFrom=2022-05-01&dateTo=2023-05-30', {
+fetch('http://api.football-data.org/v2/teams/' + equipoId + '/matches/', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
     },
 })
-    .then(promesaFetch => promesaFetch.json())
-    .then(partidos => {
+.then(promesaFetch => promesaFetch.json())
+.then(partidos => {
+    partidos.matches.forEach(partido => {
+        const urlEscudoLocal = '../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
+        const urlEscudoVisitante = '../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
+    
+        const listaPartidos = document.getElementById('partidos')
 
-        partidos.matches.forEach(partido => {
+        const card = document.createElement('div')
+        card.className = 'card mb-3'
+        card.style = 'text-align: center;'
+        listaPartidos.appendChild(card)
 
+        const ul = document.createElement('ul')
+        ul.className = 'list-group list-group-horizontal'
+        card.appendChild(ul)
 
-            const urlLocal = '../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
-            const urlVisitante = '../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
+        const li = document.createElement('li')
+        li.className = 'list-group-item border-0'
+        ul.appendChild(li)
 
+        const li_ul = document.createElement('ul')
+        li_ul.className = 'list-group'
+        li.appendChild(li_ul)
 
-            const row = document.getElementById('row')
+        const li_ul_li = document.createElement('li')
+        li_ul_li.className = 'list-group-item border-0'
+        li_ul.appendChild(li_ul_li)
 
+        const img = document.createElement('img')
+        img.src = urlEscudoLocal
+        img.height = '80'
+        img.width = '80'
+        img.alt = 'Escudo de ' + partido.homeTeam.name
+        li_ul_li.appendChild(img)
 
-            const col = document.createElement('div')
-            col.className = 'col'
-            row.appendChild(col)
+        const li_ul_li2 = document.createElement('li')
+        li_ul_li2.className = 'list-group-item border-0'
+        li_ul_li2.title = partido.homeTeam.name
+        li_ul.appendChild(li_ul_li2)
+        
+        const li2 = document.createElement('li')
+        li2.className = 'list-group-item border-0'
+        ul.appendChild(li2)
 
-            const card = document.createElement('div')
-            card.className = 'card mb-3'
-            card.style = 'width: max-content; text-align: center;'
+        const li2_br = document.createElement('br')
+        li2.appendChild(li2_br)
 
-            col.appendChild(card)
+        const li2_h2 = document.createElement('h2')
+        if (partido.score.fullTime.homeTeam == null) {
+            li2_h2.textContent = '-'
+        } else {
+            li2_h2.textContent = partido.score.fullTime.homeTeam + ' - ' + partido.score.fullTime.awayTeam
+        }
+        li2.appendChild(li2_h2)
 
-            const ul1 = document.createElement('ul')
-            ul1.className = 'list-group list-group-horizontal'
-            card.appendChild(ul1)
+        const li3 = document.createElement('li')
+        li3.className = 'list-group-item border-0'
+        ul.appendChild(li3)
 
-            const li1 = document.createElement('li')
-            li1.className = 'list-group-item border-0'
-            ul1.appendChild(li1)
+        const li3_ul = document.createElement('ul')
+        li3_ul.className = 'list-group'
+        li3.appendChild(li3_ul)
 
-            const ul2 = document.createElement('ul')
-            ul2.title = partido.homeTeam.name
-            ul2.className = 'list-group'
-            li1.appendChild(ul2)
+        const li3_ul_li = document.createElement('li')
+        li3_ul_li.className = 'list-group-item border-0'
+        li3_ul.appendChild(li3_ul_li)
 
-            const li2 = document.createElement('li')
-            li2.className = 'list-group-item border-0'
-            ul2.appendChild(li2)
+        const img2 = document.createElement('img')
+        img2.src = urlEscudoVisitante
+        img2.height = '80'
+        img2.width = '80'
+        img2.alt = 'Escudo de ' + partido.awayTeam.name 
+        li3_ul_li.appendChild(img2)
 
-            const image1 = document.createElement('img')
-            image1.src = urlLocal
-            image1.height = '80'
-            li2.appendChild(image1)
+        const li3_ul_li2 = document.createElement('li')
+        li3_ul_li2.className = 'list-group-item border-0'
+        li3_ul_li2.title = partido.awayTeam.name
+        li3_ul.appendChild(li3_ul_li2)
+        
+        const footer = document.createElement('div')
+        footer.className = 'card-footer'
+        card.appendChild(footer)
 
-            const li3 = document.createElement('li')
-            li3.className = 'list-group-item border-0'
-            li3.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li3.textContent = partido.homeTeam.name
-            ul2.appendChild(li3)
+        const fecha = document.createElement('h5')
 
+        const utcDate = new Date(partido.utcDate)
+        const date = new Date(utcDate);
 
-
-            const li4 = document.createElement('li')
-            li4.className = 'list-group-item border-0'
-            ul1.appendChild(li4)
-
-            const br1 = document.createElement('br')
-            li4.appendChild(br1)
-            const br2 = document.createElement('br')
-            li4.appendChild(br2)
-
-            const h2Resultado = document.createElement('h2')
-            h2Resultado.textContent = partido.score.fullTime.homeTeam + ' - ' + partido.score.fullTime.awayTeam
-            li4.appendChild(h2Resultado)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            const li5 = document.createElement('li')
-            li5.className = 'list-group-item border-0'
-            ul1.appendChild(li5)
-
-            const ul3 = document.createElement('ul')
-            ul3.className = 'list-group'
-            ul3.title = partido.awayTeam.name
-            li5.appendChild(ul3)
-
-            const li6 = document.createElement('li')
-            li6.className = 'list-group-item border-0'
-            ul3.appendChild(li6)
-
-            const image2 = document.createElement('img')
-            image2.src = urlVisitante
-            image2.height = '80'
-            li6.appendChild(image2)
-
-            const li7 = document.createElement('li')
-            li7.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li7.className = 'list-group-item border-0'
-            li7.textContent = partido.awayTeam.name
-            ul3.appendChild(li7)
-
-
-
-
-
-
-
-            const footer = document.createElement('div')
-            footer.className = 'card-footer'
-            card.appendChild(footer)
-
-            const fecha = document.createElement('h5')
-
-            const utcDate = new Date(partido.utcDate)
-            const date = new Date(utcDate);
-
-
-
-
-
-
-
-            fecha.textContent = date.toLocaleString().slice(0, -3)
-
-            footer.appendChild(fecha)
-
-        });
-        document.getElementById("spinner").remove()
+        fecha.textContent = date.toLocaleString().slice(0, -3)
+        footer.appendChild(fecha)
     })
-
-
+})
 
 function escudo(competition, nombre) {
     var res = ''
@@ -474,5 +432,3 @@ function escudo(competition, nombre) {
 
     return res
 }
-
-

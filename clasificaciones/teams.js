@@ -24,7 +24,7 @@ fetch('http://api.football-data.org/v2/competitions/' +
             escudo.style = style
             const imagen = document.createElement('img')
             imagen.src = equipo.team.crestUrl
-            imagen.alt = equipo.team.name
+            imagen.alt = 'Escudo del ' + equipo.team.name
             imagen.height = 50
             escudo.appendChild(imagen)
 
