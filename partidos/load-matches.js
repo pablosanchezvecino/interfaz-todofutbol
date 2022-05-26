@@ -3,7 +3,7 @@ const competition = script_tag.getAttribute("competition");
 
 
 
-fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?dateFrom=2022-05-01&dateTo=2022-05-30', {
+fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?status=FINISHED&dateFrom=2022-05-01&dateTo=2023-05-30', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
