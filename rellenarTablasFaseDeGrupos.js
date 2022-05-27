@@ -17,21 +17,22 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
             articuloGrupo.classList = 'col-lg-6'
             articuloGrupo.id = grupo.group
 
-            const card = articuloGrupo.appendChild(document.createElement('div'))
+            const link = articuloGrupo.appendChild(document.createElement('a'))
+            link.classList = 'text-reset text-decoration-none'
+            link.href = 'faseGrupoChampions.html?grupo='+grupo.group
+
+            const card = link.appendChild(document.createElement('div'))
             card.classList = 'card'
 
             const cardHeader = card.appendChild(document.createElement('div'))
             cardHeader.classList = 'card-header text-center text-bg-dark'
             const header = cardHeader.appendChild(document.createElement('b'))
             header.classList = 'fs-5'
-            header.textContent = grupo.group
+            const nombreGrupo = grupo.group.replace('_',' ').split(' ')
+            header.textContent = nombreGrupo[0].toLowerCase().replace('g','G').replace('o','') + 'o ' + nombreGrupo[1].toUpperCase()
 
             const cardBody = card.appendChild(document.createElement('div'))
             cardBody.classList = 'card-body table-responsive'
-            
-            const link = cardBody.appendChild(document.createElement('a'))
-            link.classList = 'stretched-link'
-            link.href = 'faseGrupoAChampions.html'
 
             const table = cardBody.appendChild(document.createElement('table'))
             table.classList = 'table'
