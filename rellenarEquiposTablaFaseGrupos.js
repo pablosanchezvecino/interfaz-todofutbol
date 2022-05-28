@@ -1,15 +1,14 @@
-const script_tag = document.getElementById('table-loader')
-const grupo = script_tag.getAttribute("group");
+const grupo = new URLSearchParams(window.location.search).get('grupo')
 
 fetch('http://api.football-data.org/v2/competitions/CL/standings', {
     method: 'GET',
     headers: {
-        'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
+        'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'
     },
 })
     .then(promesaFetch => promesaFetch.json())
     .then(partidos => {
-        const grupoA = partidos.standings.find(standing => standing.group === 'GROUP_B')
+        const grupoA = partidos.standings.find(standing => standing.group === grupo)
         grupoA.table.forEach(equipo => {
             const style = 'text-align: center; vertical-align: middle;'
             const fila = document.getElementById('equipos').appendChild(document.createElement('tr'))
