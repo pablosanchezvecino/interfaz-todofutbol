@@ -1,4 +1,3 @@
-const script_tag = document.getElementById('table-loader')
 const grupo = new URLSearchParams(window.location.search).get('grupo')
 
 fetch('http://api.football-data.org/v2/competitions/CL/standings', {
