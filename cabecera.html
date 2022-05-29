@@ -19,16 +19,24 @@
             <h2 class="col-3">TodoFutbol</h2>
             <div class="col-3 d-flex flex-wrap">
                 <div class="input-group">
-                    <input type="search" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-left-radius: 0; border-bottom-right-radius: 0 ">
-                    <span class="btn btn-outline-secondary" id="busqueda">Buscar</span>
+                    <input type="search" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
+                    <span class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0 ">Buscar</span>
                 </div>
                     
                 
                 
             </div>
-            <div class="col-3 d-flex flex-wrap">
+            <div class="col-3">
+              <button class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </div>
+            <div class="col-3 d-flex flex-wrap float-end">
                 <!--<input type="button" aria-describedby="login" class="form-control">-->
-                <button class="btn btn-dark" aria-describedby="login">Iniciar Sesion</button>
+                <a class="btn btn-dark" aria-describedby="login">Iniciar Sesion</a>
                 <span class="input-group-text" id="login">@</span>
             </div>
         </div>
