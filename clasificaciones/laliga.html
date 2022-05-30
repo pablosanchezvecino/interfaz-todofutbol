@@ -25,6 +25,7 @@
       z-index: 10;
     }
   </style>
+
 </head>
 
 <body>
@@ -43,17 +44,31 @@
 
     <ul class="nav nav-tabs justify-content-center mb-3">
       <li class="nav-item">
-        <a class="nav-link active disabled" aria-current="page" href="#">
+        <a class="nav-link active disabled" aria-current="page" href="#" aria-label="Consultar clasificación">
           <h1>Clasificación</h1>
         </a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link link-dark" href="../partidos/laliga.html">
-          <h1>Partidos</h1>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+          aria-expanded="false">
+          <h1 style="display: inline">Partidos</h1>
         </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="../partidos/recientes/laliga.html">
+              <h4>Partidos recientes</h4>
+            </a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="../partidos/proximos/laliga.html">
+              <h4>Partidos próximos</h4>
+            </a></li>
+        </ul>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link link-dark" href="../top-jugadores/laliga.html">
+        <a class="nav-link link-dark" href="../top-jugadores/laliga.html" aria-label="Consultar top jugadores">
           <h1>Top jugadores</h1>
         </a>
       </li>

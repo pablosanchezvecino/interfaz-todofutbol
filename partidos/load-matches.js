@@ -1,9 +1,10 @@
 const script_tag = document.getElementById('matches-loader')
 const competition = script_tag.getAttribute("competition");
+const estadoPartidos = script_tag.getAttribute("status");
 
 
 
-fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?status=FINISHED&dateFrom=2022-05-01&dateTo=2023-05-30', {
+fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?status=' + estadoPartidos + '&dateFrom=2022-05-01&dateTo=2023-05-30', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
@@ -15,8 +16,8 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
         partidos.matches.forEach(partido => {
 
 
-            const urlLocal = '../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
-            const urlVisitante = '../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
+            const urlLocal = '../../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
+            const urlVisitante = '../../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
 
 
             const row = document.getElementById('row')
