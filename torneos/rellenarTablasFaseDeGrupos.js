@@ -21,7 +21,12 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
 
             const link = articuloGrupo.appendChild(document.createElement('a'))
             link.classList = 'text-reset text-decoration-none'
-            link.href = 'faseGrupo.html?grupo='+grupo.group+'&competicion='+competicion
+            if(competicion === 'CL'){
+                link.href = 'faseGrupoChampions.html?grupo='+grupo.group+'&competicion='+competicion
+            }
+            else{
+                link.href = 'faseGrupoMundial.html?grupo='+grupo.group+'&competicion='+competicion
+            }
 
             const card = link.appendChild(document.createElement('div'))
             card.classList = 'card'
@@ -76,6 +81,7 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
                 const escudo = celdaEquipo.appendChild(document.createElement('img'))
                 escudo.src = equipo.team.crestUrl
                 escudo.height = 32
+                escudo.width = 32
                 const nombre = celdaEquipo.appendChild(document.createElement('b'))
                 nombre.classList ='ms-2'
                 nombre.style = 'text-align: center; vertical-align: middle;'

@@ -38,12 +38,19 @@ fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?
             li2.className = 'list-group-item border-0'
             ul2.appendChild(li2)
 
+            const picture1 = document.createElement('picture')
+            picture1.appendChild(document.createElement('source')).srcset = 'https://crests.football-data.org/' + partido.homeTeam.id + '.svg' 
+            picture1.appendChild(document.createElement('source')).srcset = 'https://crests.football-data.org/' + partido.homeTeam.name.toLowerCase() + '.svg' 
+
+
             const image1 = document.createElement('img')
             image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id + '.png'
-            image1.srcset = 'https://crests.football-data.org/' + partido.homeTeam.id + '.svg'
+            image1.alt = partido.homeTeam.name
             image1.height = '80'
             image1.width = '80'
-            li2.appendChild(image1)
+            picture1.appendChild(image1)
+
+            li2.appendChild(picture1)
 
             const li3 = document.createElement('li')
             li3.className = 'list-group-item border-0'
@@ -77,14 +84,18 @@ fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?
             li6.className = 'list-group-item border-0'
             ul3.appendChild(li6)
 
+            const picture2 = document.createElement('picture')
+            picture2.appendChild(document.createElement('source')).srcset = 'https://crests.football-data.org/' + partido.awayTeam.id + '.svg' 
+            picture2.appendChild(document.createElement('source')).srcset = 'https://crests.football-data.org/' + partido.awayTeam.name.toLowerCase() + '.svg' 
+
             const image2 = document.createElement('img')
             image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id + '.png'
             image2.srcset = 'https://crests.football-data.org/' + partido.awayTeam.id + '.svg'
+            image2.alt = partido.awayTeam.name
             image2.height = '80'
-            image2.onerror = (ev) => {
-                image2.src='https://crests.football-data.org/' + partido.awayTeam.name.toLowerCase() + '.svg'
-                image2.onerror = null
-            }
+            image2.width = '80'
+            picture2.appendChild(image2)
+
             li6.appendChild(image2)
 
             const li7 = document.createElement('li')
