@@ -1,6 +1,7 @@
 const grupo = new URLSearchParams(window.location.search).get('grupo')
+const competicion = new URLSearchParams(window.location.search).get('competicion')
 
-fetch('http://api.football-data.org/v2/competitions/CL/standings', {
+fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', {
     method: 'GET',
     headers: {
         'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'
@@ -9,7 +10,7 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
     .then(promesaFetch => promesaFetch.json())
     .then(partidos => {
         const grupoA = partidos.standings.find(standing => standing.group === grupo)
-        grupoA.table.forEach(equipo => {
+        grupoA.table.filter(equipo => equipo.team.id != null).forEach(equipo => {
             const style = 'text-align: center; vertical-align: middle;'
             const fila = document.getElementById('equipos').appendChild(document.createElement('tr'))
 
@@ -24,6 +25,7 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
             imagen.src = equipo.team.crestUrl
             imagen.alt = equipo.team.name
             imagen.height = 50
+            imagen.width = 50
             escudo.appendChild(imagen)
 
             const nombreEquipo = escudo.appendChild(document.createElement('div'))
@@ -53,4 +55,8 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
             puntos.style = style
             puntos.textContent = equipo.points
         });
+        const nombreGrupo = grupoA.group.replace('_',' ').split(' ')
+        document.title = nombreGrupo[0].toLowerCase().replace('g','G').replace('o','') + 'o ' + nombreGrupo[1].toUpperCase()
     })
+
+    
