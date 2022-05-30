@@ -1,6 +1,6 @@
 const grupoPartidos = new URLSearchParams(window.location.search).get('grupo')
 
-fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE&group='+grupoPartidos, {
+fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?stage=GROUP_STAGE&group=' + grupoPartidos, {
     method: 'GET',
     headers: {
         'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'
@@ -10,10 +10,10 @@ fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE
     .then(partidos => {
         const fila = document.getElementById('filaPartidos')
 
-        partidos.matches.forEach(partido => {
+        partidos.matches.filter(partido => partido.homeTeam.id !== null && partido.awayTeam.id !== null).forEach(partido => {
 
             const articuloPartido = fila.appendChild(document.createElement('article'))
-            articuloPartido.classList ='col'
+            articuloPartido.classList = 'col'
 
             const card = document.createElement('div')
             card.className = 'card mb-3'
@@ -39,9 +39,10 @@ fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE
             ul2.appendChild(li2)
 
             const image1 = document.createElement('img')
-            image1.src = 'https://crests.football-data.org/'+partido.homeTeam.id +'.png'
-            image1.srcset = 'https://crests.football-data.org/'+partido.homeTeam.id +'.svg'
+            image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id + '.png'
+            image1.srcset = 'https://crests.football-data.org/' + partido.homeTeam.id + '.svg'
             image1.height = '80'
+            image1.width = '80'
             li2.appendChild(image1)
 
             const li3 = document.createElement('li')
@@ -77,9 +78,13 @@ fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE
             ul3.appendChild(li6)
 
             const image2 = document.createElement('img')
-            image2.src = 'https://crests.football-data.org/'+partido.awayTeam.id +'.png'
-            image2.srcset = 'https://crests.football-data.org/'+partido.awayTeam.id +'.svg'
+            image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id + '.png'
+            image2.srcset = 'https://crests.football-data.org/' + partido.awayTeam.id + '.svg'
             image2.height = '80'
+            image2.onerror = (ev) => {
+                image2.src='https://crests.football-data.org/' + partido.awayTeam.name.toLowerCase() + '.svg'
+                image2.onerror = null
+            }
             li6.appendChild(image2)
 
             const li7 = document.createElement('li')
@@ -89,7 +94,7 @@ fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE
             ul3.appendChild(li7)
 
             const footer = document.createElement('div')
-            footer.className = 'card-footer text-bg-dark'            
+            footer.className = 'card-footer text-bg-dark'
 
             card.appendChild(footer)
 
@@ -101,3 +106,4 @@ fetch('http://api.football-data.org/v2/competitions/CL/matches?stage=GROUP_STAGE
             footer.appendChild(fecha)
         })
     })
+

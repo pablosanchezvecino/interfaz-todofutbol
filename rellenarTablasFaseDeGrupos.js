@@ -1,4 +1,6 @@
-fetch('http://api.football-data.org/v2/competitions/CL/standings', {
+const competicion = new URLSearchParams(window.location.search).get('competicion')
+
+fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', {
     method: 'GET',
     headers: {
         'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'
@@ -19,7 +21,7 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
 
             const link = articuloGrupo.appendChild(document.createElement('a'))
             link.classList = 'text-reset text-decoration-none'
-            link.href = 'faseGrupoChampions.html?grupo='+grupo.group
+            link.href = 'faseGrupo.html?grupo='+grupo.group+'&competicion='+competicion
 
             const card = link.appendChild(document.createElement('div'))
             card.classList = 'card'
@@ -61,7 +63,7 @@ fetch('http://api.football-data.org/v2/competitions/CL/standings', {
             puntosHeader.textContent = 'Puntos'
 
             const tableBody = table.createTBody()
-            grupo.table.forEach(equipo => {
+            grupo.table.filter(equipo => equipo.team.id != null).forEach(equipo => {
                 const filaEquipo = tableBody.insertRow()
 
                 const numero = filaEquipo.insertCell()
