@@ -82,6 +82,7 @@ async function findByUsernameAndPassword(client, username, password) {
         console.log('No se encontró el par (usuario, contraseña)');
         // Aquí seguiríamos en el formulario e informamos 
     }
+    return result;
 }
 
 async function createListing(client, newListing) {
@@ -113,5 +114,5 @@ async function deleteFavorite(client, username, favorite) {
     console.log(`${result.modifiedCount} document(s) was/were updated.`);
 }
 
-
+//export{findByUsernameAndPassword};
 
