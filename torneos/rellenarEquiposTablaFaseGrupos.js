@@ -55,8 +55,9 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
             puntos.style = style
             puntos.textContent = equipo.points
         });
-        const nombreGrupo = grupoA.group.replace('_',' ').split(' ')
-        document.title = nombreGrupo[0].toLowerCase().replace('g','G').replace('o','') + 'o ' + nombreGrupo[1].toUpperCase()
+        const nombreGrupo = grupoA.group.split('_')
+        document.title += ' '+nombreGrupo[1]
+        document.getElementById('nombreGrupo').textContent += ' '+nombreGrupo[1]
     })
 
     

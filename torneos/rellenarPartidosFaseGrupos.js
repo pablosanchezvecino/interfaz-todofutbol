@@ -81,10 +81,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?
             image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id + '.png'
             image2.srcset = 'https://crests.football-data.org/' + partido.awayTeam.id + '.svg'
             image2.height = '80'
-            image2.onerror = (ev) => {
-                image2.src='https://crests.football-data.org/' + partido.awayTeam.name.toLowerCase() + '.svg'
-                image2.onerror = null
-            }
+            image2.width = '80'
             li6.appendChild(image2)
 
             const li7 = document.createElement('li')
