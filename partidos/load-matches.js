@@ -15,10 +15,8 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
         partidos.matches.forEach(partido => {
 
-
             const urlLocal = '../../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
             const urlVisitante = '../../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
-
 
             const row = document.getElementById('row')
 
@@ -52,6 +50,9 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
             const image1 = document.createElement('img')
             image1.src = urlLocal
+            // Versión con recursos remotos (queda peor)
+            // image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id  + '.svg'
+            image1.alt = 'Escudo del ' + partido.homeTeam.name
             image1.height = '80'
             li2.appendChild(image1)
 
@@ -104,7 +105,10 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
             ul3.appendChild(li6)
 
             const image2 = document.createElement('img')
+            // Versión con recursos remotos (queda peor)
+            // image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id  + '.svg'
             image2.src = urlVisitante
+            image2.alt = 'Escudo del ' + partido.awayTeam.name
             image2.height = '80'
             li6.appendChild(image2)
 
@@ -121,7 +125,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
 
 
             const footer = document.createElement('div')
-            footer.className = 'card-footer'            
+            footer.className = 'card-footer'
 
             card.appendChild(footer)
 
@@ -133,9 +137,9 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
             footer.appendChild(fecha)
 
             var link = document.createElement('button');
-            link.textContent = "Mirar los detalles del partido";
-            link.ariaLabel = "Mirar los detalles del partido";
-            link.addEventListener('click', function() {
+            link.textContent = "Ver detalles del partido";
+            link.ariaLabel = "Ver detalles del partido";
+            link.addEventListener('click', function () {
                 location.href = '../detalles-partidos.html'
             }, false);
 

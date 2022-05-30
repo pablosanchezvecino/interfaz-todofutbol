@@ -44,6 +44,7 @@ fetch('http://api.football-data.org/v2/competitions/' +
             const imagen = document.createElement('img')
             imagen.src = urlEquipo
             imagen.height = 30
+            imagen.alt = 'Escudo del ' + jugador.team.name
 
             nombreEquipo.appendChild(imagen)
 
