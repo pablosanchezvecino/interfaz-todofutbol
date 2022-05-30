@@ -81,6 +81,7 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
                 const escudo = celdaEquipo.appendChild(document.createElement('img'))
                 escudo.src = equipo.team.crestUrl
                 escudo.height = 32
+                escudo.width = 32
                 const nombre = celdaEquipo.appendChild(document.createElement('b'))
                 nombre.classList ='ms-2'
                 nombre.style = 'text-align: center; vertical-align: middle;'

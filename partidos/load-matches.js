@@ -14,7 +14,7 @@ fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?
     .then(partidos => {
 
         partidos.matches.forEach(partido => {
-
+console.log(partido)
             const urlLocal = '../../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
             const urlVisitante = '../../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
 
