@@ -1,151 +1,79 @@
-const script_tag = document.getElementById('matches-loader')
-const competition = script_tag.getAttribute("competition");
-const estadoPartidos = script_tag.getAttribute("status");
+const script_tag = document.getElementById('detalles-partidos-loader')
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const partido_id = urlParams.get('partido_id');
 
-
-
-fetch('http://api.football-data.org/v2/competitions/' + competition + '/matches?status=' + estadoPartidos + '&dateFrom=2022-05-01&dateTo=2023-05-30', {
+fetch('http://api.football-data.org/v2/matches/' + partido_id, {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
     },
 })
     .then(promesaFetch => promesaFetch.json())
-    .then(partidos => {
+    .then(partido => {
 
-        partidos.matches.forEach(partido => {
+        const urlLocal = 'res/escudos/' + escudo('PD', partido.match.homeTeam.name) + '.png'
+        const urlVisitante = 'res/escudos/' + escudo('PD', partido.match.awayTeam.name) + '.png'
 
-            const urlLocal = '../../res/escudos/' + escudo(competition, partido.homeTeam.name) + '.png'
-            const urlVisitante = '../../res/escudos/' + escudo(competition, partido.awayTeam.name) + '.png'
-
-            const row = document.getElementById('row')
+        const row = document.getElementById('rowResultado')
 
 
-            const col = document.createElement('div')
-            col.className = 'col'
-            row.appendChild(col)
+        const col = document.createElement('div')
+        col.className = 'col text-right'
+        col.style = "col-lg-5"
+        row.appendChild(col)
+        const image1 = document.createElement('img')
+        image1.src = urlLocal
+        // Versión con recursos remotos (queda peor)
+        // image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id  + '.svg'
+        image1.alt = 'Escudo del ' + partido.match.homeTeam.name
+        image1.height = '80'
+        col.appendChild(image1)
 
-            const card = document.createElement('div')
-            card.className = 'card mb-3'
-            card.style = 'width: max-content; text-align: center;'
+        const col2 = document.createElement('div')
+        col2.className = 'col-md-1 text-center'
+        row.appendChild(col2)
+        const partido_resultado = document.createElement('h3')
+        partido_resultado.className = 'lh-lg'
+        partido_resultado.textContent = partido.match.score.fullTime.homeTeam + ' - ' + partido.match.score.fullTime.awayTeam
+        col2.appendChild(partido_resultado)
 
-            col.appendChild(card)
+        const col3 = document.createElement('div')
+        col3.className = 'col'
+        col.style = "col-lg-5"
+        row.appendChild(col3)
+        const image2 = document.createElement('img')
+        image2.src = urlVisitante
+        // Versión con recursos remotos (queda peor)
+        // image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id  + '.svg'
+        image2.alt = 'Escudo del ' + partido.match.awayTeam.name
+        image2.height = '80'
+        col3.appendChild(image2)
 
-            const ul1 = document.createElement('ul')
-            ul1.className = 'list-group list-group-horizontal'
-            card.appendChild(ul1)
-
-            const li1 = document.createElement('li')
-            li1.className = 'list-group-item border-0'
-            ul1.appendChild(li1)
-
-            const ul2 = document.createElement('ul')
-            ul2.title = partido.homeTeam.name
-            ul2.className = 'list-group'
-            li1.appendChild(ul2)
-
-            const li2 = document.createElement('li')
-            li2.className = 'list-group-item border-0'
-            ul2.appendChild(li2)
-
-            const image1 = document.createElement('img')
-            image1.src = urlLocal
-            // Versión con recursos remotos (queda peor)
-            // image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id  + '.svg'
-            image1.alt = 'Escudo del ' + partido.homeTeam.name
-            image1.height = '80'
-            li2.appendChild(image1)
-
-            const li3 = document.createElement('li')
-            li3.className = 'list-group-item border-0'
-            li3.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li3.textContent = partido.homeTeam.name
-            ul2.appendChild(li3)
+        const textoLocal = document.getElementById('equipoLocal')
+        textoLocal.textContent = partido.match.homeTeam.name
+        const textoVisitante = document.getElementById('equipoVisitante')
+        textoVisitante.textContent = partido.match.awayTeam.name
 
 
+        const ganador = document.createElement('p')
+        let resultado
+        if(partido.match.score.winner === "DRAW")
+            resultado = "Nadie"
+        else if(partido.match.score.winner === "HOME_TEAM")
+            resultado = partido.match.homeTeam.name
+        else 
+            resultado = partido.match.awayTeam.name
+        
+        ganador.textContent = "Ganador: " + resultado
+        document.body.appendChild(ganador)
 
-            const li4 = document.createElement('li')
-            li4.className = 'list-group-item border-0'
-            ul1.appendChild(li4)
+        const fecha = document.createElement('p')
+        const utcDate = new Date(partido.match.utcDate)
+        const date = new Date(utcDate);
+        fecha.textContent = "Fecha del partido: " + date.toLocaleString().slice(0, -3)
+        document.body.appendChild(fecha)
 
-            const br1 = document.createElement('br')
-            li4.appendChild(br1)
-            const br2 = document.createElement('br')
-            li4.appendChild(br2)
-
-            const h2Resultado = document.createElement('h2')
-            h2Resultado.textContent = partido.score.fullTime.homeTeam + ' - ' + partido.score.fullTime.awayTeam
-            li4.appendChild(h2Resultado)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            const li5 = document.createElement('li')
-            li5.className = 'list-group-item border-0'
-            ul1.appendChild(li5)
-
-            const ul3 = document.createElement('ul')
-            ul3.className = 'list-group'
-            ul3.title = partido.awayTeam.name
-            li5.appendChild(ul3)
-
-            const li6 = document.createElement('li')
-            li6.className = 'list-group-item border-0'
-            ul3.appendChild(li6)
-
-            const image2 = document.createElement('img')
-            // Versión con recursos remotos (queda peor)
-            // image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id  + '.svg'
-            image2.src = urlVisitante
-            image2.alt = 'Escudo del ' + partido.awayTeam.name
-            image2.height = '80'
-            li6.appendChild(image2)
-
-            const li7 = document.createElement('li')
-            li7.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li7.className = 'list-group-item border-0'
-            li7.textContent = partido.awayTeam.name
-            ul3.appendChild(li7)
-
-
-
-
-
-
-
-            const footer = document.createElement('div')
-            footer.className = 'card-footer'
-
-            card.appendChild(footer)
-
-            const fecha = document.createElement('h5')
-            const utcDate = new Date(partido.utcDate)
-            const date = new Date(utcDate);
-            fecha.textContent = date.toLocaleString().slice(0, -3)
-
-            footer.appendChild(fecha)
-
-            var link = document.createElement('button');
-            link.textContent = "Ver detalles del partido";
-            link.ariaLabel = "Ver detalles del partido";
-            link.addEventListener('click', function () {
-                location.href = '../../detalles-partidos.html?partido_id=' + partido.id
-            }, false);
-
-            footer.appendChild(link);
-        });
-        document.getElementById("spinner").remove()
     })
 
 
