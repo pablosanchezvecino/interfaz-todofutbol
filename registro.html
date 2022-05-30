@@ -37,16 +37,19 @@
             
             <div class="center">
                 
-                <form id="formulario" class="">
+                <form id="formulario" class="mb-3">
                     <h1 class="my-5">Registrarse</h1>
-                    Nombre de Usuario:<br><input class="mb-3 elementos" type="text" name="username" id="username" placeholder="Nombre de Usuario" required><br>
+                    <div id="usernameError" class="">
+                        <p id="errorU" style="opacity: 0; margin-bottom: 0px;">Introduzca Nombre de Usuario</p>
+                    </div>
+                    Nombre de Usuario:<br><input class=" elementos" type="text" name="username" id="username" placeholder="Nombre de Usuario" required><br>
+                    <div id="passwordError" class="">
+                        <p id="errorP" style="opacity: 0; margin-bottom: 0px;">Introduzca Contraseña</p>
+                    </div>
                     Contraseña:<br><input class="mb-3 elementos" type="password" name="password" id="password" placeholder="Contraseña" required><br>
                     Repetir Contraseña:<br><input class="mb-3 elementos" type="password" name="password" id="password2" placeholder="Repetir Contraseña" required><br>
                     <input class="btn btn-dark" type="submit" id="enviar">
                 </form>
-                <div id="login-error-msg-holder" class="mt-5">
-                    <p id="error" style="opacity: 0;">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-                </div>
                 ¿Ya tienes cuenta? <a href="login.html">Inicia Sesion</a>
                 
                 

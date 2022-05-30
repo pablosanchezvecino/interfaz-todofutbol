@@ -1,18 +1,36 @@
 const boton = document.getElementById("enviar");
+const errUsername = document.getElementById("errorU");
+const errPassword = document.getElementById("errorP");
 
 
 boton.addEventListener("click", (e) => {
     e.preventDefault();
-
     const username = document.getElementById("username");
     const password = document.getElementById("password");
-    
     console.log(username.value);
+    if(username.value==""){
+        errUsername.style.opacity=1;
+    } else {
+        errUsername.style.opacity=0;
+    }
+    if(password.value==""){
+        errPassword.style.opacity=1;
+    } else {
+        errPassword.style.opacity=0;
+    }
+    if(username.value!=="" && password.value!==""){
+        
+        
+        
+        console.log(username.value);
 
-    registrar_usuario(username.value, password.value);
-    validar_login(username.value, password.value);
-    //window.location.replace("/pantalla_principal/pantalla_principal.html");
-    window.location.replace("/cabecera.html");
+        registrar_usuario(username.value, password.value);
+        validar_login(username.value, password.value);
+        //window.location.replace("/pantalla_principal/pantalla_principal.html");
+        window.location.replace("/cabecera.html");
+    }
+
+    
     
 })
 
