@@ -233,7 +233,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId + '/matches/?competiti
         link.textContent = "Ver detalles del partido";
         link.ariaLabel = "Ver detalles del partido";
         link.addEventListener('click', function () {
-            location.href = '../../detalles-partidos.html?partido_id=' + partido.id
+            location.href = '../partidos/recientes/detalles-partidos.html?partido_id=' + partido.id
         }, false);
 
         footer.appendChild(link);
