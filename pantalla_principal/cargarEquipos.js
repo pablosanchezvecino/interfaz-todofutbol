@@ -42,7 +42,7 @@ fetch('http://api.football-data.org/v2/teams?limit=10', {
         li_ul.appendChild(li_ul_li1)
 
         const img = document.createElement('img')
-        img.src = 'https://crests.football-data.org/' + equipo.id + '.png' //urlEscudo
+        img.src = equipo.crestUrl
         img.height = '80'
         img.style = "color: white"
         img.alt = 'Escudo de ' + nombre

@@ -7,7 +7,7 @@ const equipoId = params.teamId;
 function add_favorite(teamId, username) {
     
     var user = JSON.parse(localStorage.getItem(username));
-
+    console.log(user)
     user.favoriteTeams.push(teamId)
     var userJSON = JSON.stringify(user)
     localStorage.setItem(username, userJSON);
@@ -26,7 +26,15 @@ function remove_favorite(teamId, username) {
     }
     var userJSON = JSON.stringify(user)
     localStorage.setItem(username, userJSON);
-    localStorage.setItem(username, userJSON);
+    sessionStorage.setItem('active', userJSON);
+
+}
+
+function get_favorites(username) {
+    
+    if (localStorage.getItem(username)) {
+        return JSON.parse(localStorage.getItem(username)).favoriteTeams;
+    }
 
 }
 
@@ -38,9 +46,10 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
 })
 .then(promesaFetch => promesaFetch.json())
 .then(equipo => {
+    console.log(equipo)
     const nombre = equipo.name
     const competicionA = equipo.activeCompetitions[0].code
-    const urlEscudo = '../res/escudos/' + escudo(competicionA, nombre) + '.png'
+    const urlEscudo = equipo.crestUrl
 
     const cabeceraEquipo = document.getElementById('cabeceraEquipo')
 
@@ -86,10 +95,18 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         const corazonA = document.createElement('a')
         
         const corazon = document.createElement('img')
-        corazon.src = '../res/vacio.gif'
+
+        const username = JSON.parse(sessionStorage.getItem('active')).username
+        const favoritos = get_favorites(username)
+        if (favoritos.includes("" + equipo.id)) {
+            corazon.src = '../res/relleno.gif'
+            corazon.estado = 'relleno'
+        } else {
+            corazon.src = '../res/vacio.gif'
+            corazon.estado = 'vacio'
+        } 
         corazon.width = '64'
         corazon.height = '64'
-        corazon.estado = 'vacio'
         corazon.alt = 'Botón de añadir equipo como favorito'
         corazonA.appendChild(corazon)
         //nombreEquipoDiv.appendChild(corazonA)
@@ -104,13 +121,13 @@ function cambiaEstado(corazon) {
     if (corazon.estado == 'relleno' || corazon.estado == 'rellenando') {
         corazon.src = '../res/vaciar.gif'
         corazon.estado = 'vaciando'
-        let username = JSON.parse(sessionStorage.get('active')).username
-        add_favorite(teamId, username)
+        let username = JSON.parse(sessionStorage.getItem('active')).username
+        remove_favorite(parseInt(equipoId), username)
     } else if (corazon.estado === 'vacio' || corazon.estado == 'vaciando') {
         corazon.src = '../res/rellenar.gif'
         corazon.estado = 'rellenando'
-        let username = JSON.parse(sessionStorage.get('active')).username
-        remove_favorite(teamId, username)
+        let username = JSON.parse(sessionStorage.getItem('active')).username
+        add_favorite(parseInt(equipoId), username)
     }
 }
 
