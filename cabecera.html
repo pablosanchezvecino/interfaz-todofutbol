@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.rtl.min.css" integrity="sha384-dc2NSrAXbAkjrdm9IYrX10fQq9SDG6Vjz7nQVKdKcJl3pC+k37e7qJR5MVSCS+wR" crossorigin="anonymous">
-    <script defer src="cabecera.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
     <title>Cabecera</title>
     
   </head>
   <body>
+    <script defer src="cabecera.js"></script>
     <style>
       * {
         box-sizing: border-box;
@@ -61,13 +62,24 @@
     <header class="container-fluid text-bg-dark px-2 py-2 ">
         
       <div class="row d-flex flex-wrap align-items-center">
-          <a class="btn btn-dark col-4" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+          <div class="col-2">
+            
+            <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+          </div>
+          <div class="col-2">
+            <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="pantalla_principal/pantalla_principal.html">
+              <img src="house.png" style="vertical-align: middle;">
+              <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
+            </a>
+            
+          </div>
+          
         <!--<h2 class="col-3">TodoFutbol</h2>-->
           <div class="col-4 busqueda">
             <form autocomplete="off">
               <div class="input-group">
-                <input type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-                <span class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0 ">Buscar</span>
+                <input type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0; ">
+                <span class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">Buscar</span>
               </div>
             </form>
           </div>
@@ -82,13 +94,13 @@
           </div>
           <div class="col-2 d-flex flex-wrap float-end">
               <!--<input type="button" aria-describedby="login" class="form-control">-->
-              <a class="btn btn-dark" aria-describedby="login" href="login.html">Iniciar Sesion</a>
-              <a class="input-group-text" id="login">
+              <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="login.html">Iniciar Sesion</a>
+              <button hiddden class="input-group-text" id="logout">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                   <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                 </svg>
-              </a>
+              </button>
           </div>
       </div>
         
@@ -197,7 +209,7 @@
       });
     }
 
-    var opciones=["Barcelona", "Real Madrid", "Atlético de Madrid", "Real sociedad"];
+    var opciones=["Barcelona", "Real Madrid", "Atlético de Madrid", "Real sociedad", "", "", "", "", "", "", "", "", "", "", ""];
 
     autocomplete(document.getElementById("myInput"), opciones);
     </script>
