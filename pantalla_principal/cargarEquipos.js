@@ -10,8 +10,6 @@ fetch('http://api.football-data.org/v2/teams?limit=10', {
     console.log(equipos)
     equipos.teams.forEach(equipo => {
         const nombre = equipo.name
-        //const competicion = 'PD' equipo.activeCompetitions[0].code
-        //const urlEscudo = '../res/escudos/la-liga/betis.png'  //'../res/escudos/' + escudo(competicion, nombre) + '.png'
 
         const article = document.createElement('article')
         article.className = 'col-2'
@@ -46,6 +44,7 @@ fetch('http://api.football-data.org/v2/teams?limit=10', {
         const img = document.createElement('img')
         img.src = 'https://crests.football-data.org/' + equipo.id + '.png' //urlEscudo
         img.height = '80'
+        img.style = "color: white"
         img.alt = 'Escudo de ' + nombre
         li_ul_li1.appendChild(img)
 
@@ -55,6 +54,7 @@ fetch('http://api.football-data.org/v2/teams?limit=10', {
         li_ul_li2.textContent = nombre
         li_ul.appendChild(li_ul_li2)
     })
+    document.getElementById("spinner").remove()
 })
 
 function escudo(competition, nombre) {
