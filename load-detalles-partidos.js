@@ -31,6 +31,7 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
         const urlVisitante = 'res/escudos/' + escudo(competicion, partido.match.awayTeam.name) + '.png'
 
         const row = document.getElementById('rowResultado')
+        const containerDetalles = document.getElementById('containerDetalles')
 
         const col = document.createElement('div')
         col.className = 'col-lg-1 text-center'
@@ -76,34 +77,40 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
         const ganador = document.createElement('p')
         var resultado
         if(partido.match.score.winner === "DRAW")
-            resultado = "Nadie"
+            resultado = "Empate"
         else if(partido.match.score.winner === "HOME_TEAM")
             resultado = partido.match.homeTeam.name
         else 
             resultado = partido.match.awayTeam.name
         
-        ganador.textContent = "Ganador: " + resultado
-        document.body.appendChild(ganador)
+        ganador.innerHTML = "<b>Ganador: </b>" + resultado
+        containerDetalles.appendChild(ganador)
 
         const fecha = document.createElement('p')
         const utcDate = new Date(partido.match.utcDate)
         const date = new Date(utcDate);
-        fecha.textContent = "Fecha del partido: " + date.toLocaleString().slice(0, -3)
-        document.body.appendChild(fecha)
+        fecha.innerHTML = "<b>Fecha del partido: </b>" + date.toLocaleString().slice(0, -3)
+        containerDetalles.appendChild(fecha)
 
-        const estadio = document.createElement('p')
-        estadio.textContent = "Estadio: " + partido.match.venue
-        document.body.appendChild(estadio)
+        if(partido.match.venue != null){
+            const estadio = document.createElement('p')
+            estadio.innerHTML = '<strong>' + "Estadio: " + '</strong>' + partido.match.venue
+            containerDetalles.appendChild(estadio)
+        }
 
         const arbitros = document.createElement('p')
-        arbitros.textContent = "Arbitros: "
-        document.body.appendChild(arbitros)
+        arbitros.innerHTML = "<b>Arbitros: </b>"
+        containerDetalles.appendChild(arbitros)
+
+        const listaArbitros = document.createElement('ul')
 
         partido.match.referees.forEach(arbitro => {
-            const arbitro_nombre = document.createElement('p')
-            arbitro_nombre.textContent = arbitro.name
-            document.body.appendChild(arbitro_nombre)
+            const elemento_lista = document.createElement('li')
+            elemento_lista.textContent = arbitro.name
+            listaArbitros.appendChild(elemento_lista)
         })
+        containerDetalles.appendChild(listaArbitros)
+
         document.getElementById("spinner").remove()
     })
 
