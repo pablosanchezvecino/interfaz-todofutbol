@@ -11,7 +11,13 @@
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <title>Detalle de partidos</title>
   <link rel="icon" href="../res/icon.png">
-
+  <style>
+    p {text-align: center;}
+    figcaption {
+      padding: 2px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,76 +42,12 @@
     </ul>
 
     <div class="container">
-      <div class="row justify-content-md-center">
-        <div class="col col-lg-5 text-right">
-          <img class="col-auto" src="res\escudos\la-liga\rayo.png" height="64" width="64" class="me-2">
-        </div>
-        <div class="col-md-1 text-center">
-          <h3 class="lh-lg">3 - 1</h3>
-        </div>
-        <div class="col col-lg-5">
-          <img class="col-auto" src="res\escudos\la-liga\betis.png" height="64" width="64" class="me-2">
+      <div id="spinner" class="mb-5 d-flex justify-content-center">
+        <div class="spinner-border" role="status">
         </div>
       </div>
 
-      <div class="row justify-content-md-center">
-        <div class="col col-lg-5 text-right">
-          <h6 class="lh-lg">Cristiano Ronaldo Maldoves de la Rosa de los Riscos</h6>
-        </div>
-        <div class="col-md-1 text-center">
-          <h6 class="lh-lg">45'</h6>
-        </div>
-        <div class="col col-lg-5">
-          <h6 class="lh-lg"></h6>
-        </div>
-      </div>
-
-      <div class="d-flex" style="height: 15px; padding-left: 645px;">
-        <div class="vr"></div>
-      </div>
-
-      <div class="row justify-content-md-center">
-        <div class="col col-lg-5">
-          <h6 class="lh-lg"></h6>
-        </div>
-        <div class="col-md-1 text-center">
-          <h6 class="lh-lg">60'</h6>
-        </div>
-        <div class="col col-lg-5 text-left">
-          <h6 class="lh-lg">Ricky Van Wolfswinkel Mohamed Lamine Zemmamouche</h6>
-        </div>
-      </div>
-
-      <div class="d-flex" style="height: 15px; padding-left: 645px;">
-        <div class="vr"></div>
-      </div>
-
-      <div class="row justify-content-md-center">
-        <div class="col col-lg-5 text-right">
-          <h6 class="lh-lg">Cristiano Ronaldo Maldoves de la Rosa de los Riscos</h6>
-        </div>
-        <div class="col-md-1 text-center">
-          <h6 class="lh-lg">73'</h6>
-        </div>
-        <div class="col col-lg-5">
-          <h6 class="lh-lg"></h6>
-        </div>
-      </div>
-
-      <div class="d-flex" style="height: 15px; padding-left: 645px;">
-        <div class="vr"></div>
-      </div>
-
-      <div class="row justify-content-md-center">
-        <div class="col col-lg-5 text-right">
-          <h6 class="lh-lg">Yo</h6>
-        </div>
-        <div class="col-md-1 text-center">
-          <h6 class="lh-lg">90'</h6>
-        </div>
-        <div class="col col-lg-5">
-          <h6 class="lh-lg"></h6>
-        </div>
+      <div class="row justify-content-md-center" id="rowResultado">
       </div>
     </div>
 
@@ -113,7 +55,7 @@
 
   </div>
 
-  <p>Más detalles (estadio, jugadores de cada equipo, estadisticas de cada equipo...)</p>
+  <script id="detalles-partidos-loader" src="load-detalles-partidos.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
