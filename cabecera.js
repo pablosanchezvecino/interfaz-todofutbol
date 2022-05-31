@@ -133,3 +133,16 @@ const ht = new Map();
     ht.set("Bielefeld", 38);
     ht.set("Leipzig", 721);
 
+const buscar = document.getElementById("busqueda");
+const relleno = document.getElementById("myInput");
+
+buscar.addEventListener("click", (e)=>{
+    
+    id = ht.get(myInput.value);
+    
+    if(id!==null){
+        console.log(id);
+        window.location.replace("equipo/equipo.html?teamId="+id);
+        
+    }
+})
