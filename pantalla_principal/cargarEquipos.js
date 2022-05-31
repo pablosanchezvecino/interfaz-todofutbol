@@ -1,248 +1,61 @@
-const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
-
-const equipoId = params.teamId;
-
-function add_favorite(teamId, username) {
-    
-    var user = JSON.parse(localStorage.getItem(username));
-
-    user.favoriteTeams.push(teamId)
-    var userJSON = JSON.stringify(user)
-    localStorage.setItem(username, userJSON);
-    sessionStorage.setItem('active', userJSON);
-
-}
-
-function remove_favorite(teamId, username) {
-    
-    var user = JSON.parse(localStorage.getItem(username));
-
-    const index = user.favoriteTeams.indexOf(teamId);
-
-    if (index > -1) {
-        user.favoriteTeams.splice(index, 1); 
-    }
-    var userJSON = JSON.stringify(user)
-    localStorage.setItem(username, userJSON);
-    localStorage.setItem(username, userJSON);
-
-}
-
-fetch('http://api.football-data.org/v2/teams/' + equipoId, {
+fetch('http://api.football-data.org/v2/teams?limit=10', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
     },
 })
 .then(promesaFetch => promesaFetch.json())
-.then(equipo => {
-    const nombre = equipo.name
-    const competicionA = equipo.activeCompetitions[0].code
-    const urlEscudo = '../res/escudos/' + escudo(competicionA, nombre) + '.png'
+.then(equipos => {
+    const seccionEquipos = document.getElementById('seccionEquipos')
+    console.log(equipos)
+    equipos.teams.forEach(equipo => {
+        const nombre = equipo.name
 
-    const cabeceraEquipo = document.getElementById('cabeceraEquipo')
+        const article = document.createElement('article')
+        article.className = 'col-2'
+        seccionEquipos.appendChild(article)
 
-    const lista = document.createElement('ul')
-    lista.className = 'list-group list-group-horizontal'
-    cabeceraEquipo.appendChild(lista)
+        const href = document.createElement('a')
+        href.href = '../equipo/equipo.html?teamId=' + equipo.id
+        href.className = 'text-decoration-none'
+        article.appendChild(href)
 
-    const li1 = document.createElement('li')
-    li1.className = 'list-group-item border-0'
-    lista.appendChild(li1)
+        const card = document.createElement('div')
+        card.className = 'card mb-3 col-lg-6 mx-5 my-3'
+        card.style = 'text-align: center;'
+        href.appendChild(card)
 
-    const escudoImg = document.createElement('img')
-    escudoImg.src = urlEscudo;
-    escudoImg.height = '64'
-    escudoImg.className = 'float-start text-end align-middle me-2'
-    escudoImg.alt = 'Escudo de ' + nombre
-    //cabeceraEquipo.appendChild(escudoImg)
-    li1.appendChild(escudoImg)
+        const ul = document.createElement('ul')
+        ul.className = 'list-group list-group-horizontal'
+        card.appendChild(ul)
 
-    const li2 = document.createElement('li')
-    li2.className = 'list-group-item border-0'
-    lista.appendChild(li2)
+        const li = document.createElement('li')
+        li.className = 'list-group-item border-0 bg-dark'
+        ul.appendChild(li)
 
-    const nombreEquipoDiv = document.createElement('div')
-    nombreEquipoDiv.className = 'container'
-    //cabeceraEquipo.appendChild(nombreEquipoDiv)
-    li2.appendChild(nombreEquipoDiv)
+        const li_ul = document.createElement('ul')
+        li_ul.className = 'list-group'
+        li.appendChild(li_ul)
 
-    const equipoText =  document.createElement('h5')
-    equipoText.className = 'mb-0 text-muted'
-    equipoText.textContent = 'Equipo'
-    nombreEquipoDiv.appendChild(equipoText)
+        const li_ul_li1 = document.createElement('li')
+        li_ul_li1.className = 'list-group-item border-0 bg-dark'
+        li_ul.appendChild(li_ul_li1)
 
-    const equipoNombre = document.createElement('h1')
-    equipoNombre.textContent = nombre
-    nombreEquipoDiv.appendChild(equipoNombre)
+        const img = document.createElement('img')
+        img.src = 'https://crests.football-data.org/' + equipo.id + '.png' //urlEscudo
+        img.height = '80'
+        img.style = "color: white"
+        img.alt = 'Escudo de ' + nombre
+        li_ul_li1.appendChild(img)
 
-    const li3 = document.createElement('li')
-    li3.className = 'list-group-item border-0'
-    lista.appendChild(li3)
-    
-    if (sessionStorage.getItem('active')) {
-        const corazonA = document.createElement('a')
-        
-        const corazon = document.createElement('img')
-        corazon.src = '../res/vacio.gif'
-        corazon.width = '64'
-        corazon.height = '64'
-        corazon.estado = 'vacio'
-        corazon.alt = 'Botón de añadir equipo como favorito'
-        corazonA.appendChild(corazon)
-        //nombreEquipoDiv.appendChild(corazonA)
-        li3.appendChild(corazonA)
-            
-        corazon.addEventListener("click", function (e) { cambiaEstado(this) })
-    }
-    cargaPartidos(competicionA);
+        const li_ul_li2 = document.createElement('li')
+        li_ul_li2.className = 'list-group-item border-0 bg-dark text-light'
+        li_ul_li2.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
+        li_ul_li2.textContent = nombre
+        li_ul.appendChild(li_ul_li2)
+    })
+    document.getElementById("spinner").remove()
 })
-
-function cambiaEstado(corazon) {
-    if (corazon.estado == 'relleno' || corazon.estado == 'rellenando') {
-        corazon.src = '../res/vaciar.gif'
-        corazon.estado = 'vaciando'
-        let username = JSON.parse(sessionStorage.get('active')).username
-        add_favorite(teamId, username)
-    } else if (corazon.estado === 'vacio' || corazon.estado == 'vaciando') {
-        corazon.src = '../res/rellenar.gif'
-        corazon.estado = 'rellenando'
-        let username = JSON.parse(sessionStorage.get('active')).username
-        remove_favorite(teamId, username)
-    }
-}
-
-function cargaPartidos(competicion) {
-    fetch('http://api.football-data.org/v2/teams/' + equipoId + '/matches/?competitions=' + competicion + '&dateFrom=2021-08-12&dateTo=2023-05-30', {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
-        },
-    })
-    .then(promesaFetch => promesaFetch.json())
-    .then(partidos => {
-        partidos.matches.reverse().forEach(partido => {
-            const urlLocal = '../res/escudos/' + escudo(competicion, partido.homeTeam.name) + '.png'
-            const urlVisitante = '../res/escudos/' + escudo(competicion, partido.awayTeam.name) + '.png'
-
-            const row = document.getElementById('partidos')
-
-
-            const col = document.createElement('div')
-            col.className = 'col'
-            row.appendChild(col)
-
-            const card = document.createElement('div')
-            card.className = 'card mb-3'
-            card.style = 'width: max-content; text-align: center;'
-
-            col.appendChild(card)
-
-            const ul1 = document.createElement('ul')
-            ul1.className = 'list-group list-group-horizontal'
-            card.appendChild(ul1)
-
-            const li1 = document.createElement('li')
-            li1.className = 'list-group-item border-0'
-            li1.id = 'tarjeta'
-            ul1.appendChild(li1)
-
-            const ul2 = document.createElement('ul')
-            ul2.title = partido.homeTeam.name
-            ul2.className = 'list-group'
-            li1.appendChild(ul2)
-
-            const li2 = document.createElement('li')
-            li2.className = 'list-group-item border-0'
-            li2.id = 'tarjeta'
-            ul2.appendChild(li2)
-
-            const image1 = document.createElement('img')
-            image1.src = urlLocal
-            // Versión con recursos remotos (queda peor)
-            // image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id  + '.svg'
-            image1.alt = 'Escudo del ' + partido.homeTeam.name
-            image1.height = '80'
-            li2.appendChild(image1)
-
-            const li3 = document.createElement('li')
-            li3.className = 'list-group-item border-0'
-            li3.id = 'tarjeta'
-            li3.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li3.textContent = partido.homeTeam.name
-            ul2.appendChild(li3)
-
-
-
-            const li4 = document.createElement('li')
-            li4.className = 'list-group-item border-0'
-            li4.id = 'tarjeta'
-            ul1.appendChild(li4)
-
-            const br1 = document.createElement('br')
-            li4.appendChild(br1)
-            const br2 = document.createElement('br')
-            li4.appendChild(br2)
-
-            const h2Resultado = document.createElement('h2')
-            h2Resultado.textContent = partido.score.fullTime.homeTeam + ' - ' + partido.score.fullTime.awayTeam
-            li4.appendChild(h2Resultado)
-
-            const li5 = document.createElement('li')
-            li5.className = 'list-group-item border-0'
-            li5.id = 'tarjeta'
-            ul1.appendChild(li5)
-
-            const ul3 = document.createElement('ul')
-            ul3.className = 'list-group'
-            ul3.title = partido.awayTeam.name
-            li5.appendChild(ul3)
-
-            const li6 = document.createElement('li')
-            li6.className = 'list-group-item border-0'
-            li6.id = 'tarjeta'
-            ul3.appendChild(li6)
-
-            const image2 = document.createElement('img')
-            // Versión con recursos remotos (queda peor)
-            // image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id  + '.svg'
-            image2.src = urlVisitante
-            image2.alt = 'Escudo del ' + partido.awayTeam.name
-            image2.height = '80'
-            li6.appendChild(image2)
-
-            const li7 = document.createElement('li')
-            li7.style = 'width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;'
-            li7.className = 'list-group-item border-0'
-            li7.id = 'tarjeta'
-            li7.textContent = partido.awayTeam.name
-            ul3.appendChild(li7)
-
-            const footer = document.createElement('div')
-            footer.className = 'card-footer'
-
-            card.appendChild(footer)
-
-            const fecha = document.createElement('h5')
-            const utcDate = new Date(partido.utcDate)
-            const date = new Date(utcDate);
-            fecha.textContent = date.toLocaleString().slice(0, -3)
-
-            footer.appendChild(fecha)
-
-            var link = document.createElement('button');
-            link.textContent = "Ver detalles del partido";
-            link.ariaLabel = "Ver detalles del partido";
-            link.addEventListener('click', function () {
-                location.href = '../partidos/recientes/detalles-partidos.html?partido_id=' + partido.id
-            }, false);
-
-            footer.appendChild(link);
-        });
-    })
-}
 
 function escudo(competition, nombre) {
     var res = ''
