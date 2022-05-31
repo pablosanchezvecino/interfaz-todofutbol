@@ -27,8 +27,8 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
             competicion = 'FL1'
         }
 
-        const urlLocal = 'res/escudos/' + escudo(competicion, partido.match.homeTeam.name) + '.png'
-        const urlVisitante = 'res/escudos/' + escudo(competicion, partido.match.awayTeam.name) + '.png'
+        const urlLocal = '../../res/escudos/' + escudo(competicion, partido.match.homeTeam.name) + '.png'
+        const urlVisitante = '../../res/escudos/' + escudo(competicion, partido.match.awayTeam.name) + '.png'
 
         const row = document.getElementById('rowResultado')
         const containerDetalles = document.getElementById('containerDetalles')

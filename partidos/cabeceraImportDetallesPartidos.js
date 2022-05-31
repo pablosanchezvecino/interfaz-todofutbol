@@ -4,7 +4,7 @@ document.write(` <html lang="es">
   <header class="container-fluid text-bg-dark px-2 py-2 ">
       
       <div class="row d-flex flex-wrap align-items-center">
-          <a class="btn btn-dark col-3"><h2>TodoFutbol</h2></a>  
+          <a class="btn btn-dark col-3" href="../../pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
         
           <div class="col-4 d-flex flex-wrap">
               <div class="input-group px-5">
