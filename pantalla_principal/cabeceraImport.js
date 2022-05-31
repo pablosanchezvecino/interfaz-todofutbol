@@ -1,6 +1,6 @@
 document.write(`
 
-<style>
+    <style>
       * {
         box-sizing: border-box;
       }
@@ -39,14 +39,29 @@ document.write(`
         background-color: #504e4e !important; 
         color: #ffffff; 
       }
+
+      .busqueda {
+        padding-left: 6.5%;
+        padding-right: 6.5%;;
+      }
     </style>
     
     <header class="container-fluid text-bg-dark px-2 py-2 ">
         
       <div class="row d-flex flex-wrap align-items-center">
-          <a class="btn btn-dark col-4" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+          <div class="col-2">
+                
+            <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+          </div>
+          <div class="col-2">
+            <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="pantalla_principal/pantalla_principal.html">
+              <img src="../house.png" style="vertical-align: middle;">
+              <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
+            </a>
+            
+          </div>  
         <!--<h2 class="col-3">TodoFutbol</h2>-->
-          <div class="col-4 d-flex flex-wrap">
+          <div class="col-4 busqueda">
             <form autocomplete="off">
               <div class="input-group">
                 <input type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
@@ -57,7 +72,7 @@ document.write(`
 
 
           <div class="col-2">
-            <button class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
+            <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
             <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">Partidos</a></li>
               <li><a class="dropdown-item" href="#">Equipos</a></li>
@@ -65,13 +80,13 @@ document.write(`
           </div>
           <div class="col-2 d-flex flex-wrap float-end">
               <!--<input type="button" aria-describedby="login" class="form-control">-->
-              <a class="btn btn-dark" aria-describedby="login" href="login.html">Iniciar Sesion</a>
-              <a class="input-group-text" id="login">
+              <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Iniciar Sesion</a>
+              <button hidden class="input-group-text" id="logout">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                   <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
                 </svg>
-              </a>
+              </button>
           </div>
       </div>
         
@@ -80,9 +95,36 @@ document.write(`
 
 
 
+    <script>
+      const dropdown = document.getElementById("dropdown");
 
+      if(sessionStorage.getItem("active")){
+        sesion = sessionStorage.getItem("active");
+        dropdown.hidden=false;
+      } else {
+          console.log("No esta logeado");
+      }
+
+      const login = document.getElementById("login");
+      const logout = document.getElementById("logout");
+      if(sessionStorage.getItem("active")!==null){
+          login.href="";
+          login.textContent="Sesion iniciada";
+          logout.hidden=false;
+      }
+
+      logout.addEventListener("click", (e)=>{
+
+          e.preventDefault();
+          sessionStorage.removeItem("active");
+          window.location.replace("pantalla_principal.html");
+
+      })
+    </script>
 
     <script>
+    
+
       function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
         the text field element and an array of possible autocompleted values:*/
@@ -180,9 +222,10 @@ document.write(`
       });
     }
 
-    var opciones=["Barcelona", "Real Madrid", "Atlético de Madrid", "Real sociedad"];
+    var opciones=["Barcelona", "Real Madrid", "Atlético de Madrid", "Real sociedad", "", "", "", "", "", "", "", "", "", "", ""];
 
     autocomplete(document.getElementById("myInput"), opciones);
+    
     </script>
   
 
