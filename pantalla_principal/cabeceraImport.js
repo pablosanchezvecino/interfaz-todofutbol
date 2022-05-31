@@ -51,10 +51,10 @@ document.write(`
       <div class="row d-flex flex-wrap align-items-center">
           <div class="col-2">
                 
-            <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+            <a class="btn btn-dark" href="./pantalla_principal.html"><h2>TodoFutbol</h2></a>  
           </div>
           <div class="col-2">
-            <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="pantalla_principal/pantalla_principal.html">
+            <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="./pantalla_principal.html">
               <img src="../house.png" style="vertical-align: middle;">
               <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
             </a>
