@@ -12,23 +12,41 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
     .then(promesaFetch => promesaFetch.json())
     .then(partido => {
 
-        const urlLocal = 'res/escudos/' + escudo('PD', partido.match.homeTeam.name) + '.png'
-        const urlVisitante = 'res/escudos/' + escudo('PD', partido.match.awayTeam.name) + '.png'
+        //alert(partido.match.competition.name)
+
+        var competicion
+        if(partido.match.competition.name === 'Premier League'){
+            competicion = 'PL'
+        } else if(partido.match.competition.name === 'Primera Division'){
+            competicion = 'PD'
+        } else if(partido.match.competition.name === 'Serie A'){
+            competicion = 'SA'
+        } else if(partido.match.competition.name === 'Bundesliga'){
+            competicion = 'BL1'
+        } else if(partido.match.competition.name === 'Ligue 1'){
+            competicion = 'FL1'
+        }
+
+        const urlLocal = 'res/escudos/' + escudo(competicion, partido.match.homeTeam.name) + '.png'
+        const urlVisitante = 'res/escudos/' + escudo(competicion, partido.match.awayTeam.name) + '.png'
 
         const row = document.getElementById('rowResultado')
 
-
         const col = document.createElement('div')
-        col.className = 'col text-right'
-        col.style = "col-lg-5"
+        col.className = 'col-lg-1 text-center'
         row.appendChild(col)
+        const figure1 = document.createElement('figure')
         const image1 = document.createElement('img')
         image1.src = urlLocal
         // Versión con recursos remotos (queda peor)
         // image1.src = 'https://crests.football-data.org/' + partido.homeTeam.id  + '.svg'
         image1.alt = 'Escudo del ' + partido.match.homeTeam.name
         image1.height = '80'
-        col.appendChild(image1)
+        const figcaption1 = document.createElement('figcaption')
+        figcaption1.textContent = partido.match.homeTeam.name
+        figure1.appendChild(image1)
+        figure1.appendChild(figcaption1)
+        col.appendChild(figure1)
 
         const col2 = document.createElement('div')
         col2.className = 'col-md-1 text-center'
@@ -39,25 +57,24 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
         col2.appendChild(partido_resultado)
 
         const col3 = document.createElement('div')
-        col3.className = 'col'
-        col.style = "col-lg-5"
+        col3.className = 'col-lg-1 text-center'
         row.appendChild(col3)
+        const figure2 = document.createElement('figure')
         const image2 = document.createElement('img')
         image2.src = urlVisitante
         // Versión con recursos remotos (queda peor)
         // image2.src = 'https://crests.football-data.org/' + partido.awayTeam.id  + '.svg'
         image2.alt = 'Escudo del ' + partido.match.awayTeam.name
         image2.height = '80'
-        col3.appendChild(image2)
-
-        const textoLocal = document.getElementById('equipoLocal')
-        textoLocal.textContent = partido.match.homeTeam.name
-        const textoVisitante = document.getElementById('equipoVisitante')
-        textoVisitante.textContent = partido.match.awayTeam.name
+        const figcaption2 = document.createElement('figcaption')
+        figcaption2.textContent = partido.match.awayTeam.name
+        figure2.appendChild(image2)
+        figure2.appendChild(figcaption2)
+        col3.appendChild(figure2)
 
 
         const ganador = document.createElement('p')
-        let resultado
+        var resultado
         if(partido.match.score.winner === "DRAW")
             resultado = "Nadie"
         else if(partido.match.score.winner === "HOME_TEAM")
@@ -74,6 +91,20 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
         fecha.textContent = "Fecha del partido: " + date.toLocaleString().slice(0, -3)
         document.body.appendChild(fecha)
 
+        const estadio = document.createElement('p')
+        estadio.textContent = "Estadio: " + partido.match.venue
+        document.body.appendChild(estadio)
+
+        const arbitros = document.createElement('p')
+        arbitros.textContent = "Arbitros: "
+        document.body.appendChild(arbitros)
+
+        partido.match.referees.forEach(arbitro => {
+            const arbitro_nombre = document.createElement('p')
+            arbitro_nombre.textContent = arbitro.name
+            document.body.appendChild(arbitro_nombre)
+        })
+        document.getElementById("spinner").remove()
     })
 
 
