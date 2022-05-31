@@ -98,7 +98,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
 
         const username = JSON.parse(sessionStorage.getItem('active')).username
         const favoritos = get_favorites(username)
-        if (favoritos.includes("" + equipo.id)) {
+        if (favoritos.includes(equipo.id)) {
             corazon.src = '../res/relleno.gif'
             corazon.estado = 'relleno'
         } else {
@@ -118,7 +118,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
 })
 
 function cambiaEstado(corazon) {
-    if (corazon.estado == 'relleno' || corazon.estado == 'rellenando') {
+    if (corazon.estado === 'relleno' || corazon.estado === 'rellenando') {
         corazon.src = '../res/vaciar.gif'
         corazon.estado = 'vaciando'
         let username = JSON.parse(sessionStorage.getItem('active')).username
