@@ -13,6 +13,11 @@
   <link rel="icon" href="../res/icon.png">
   <style>
     p {text-align: center;}
+    #division {
+      text-align: left;
+      font-size: 150%;
+    }
+    #headerDetalles{text-align: center;}
     figcaption {
       padding: 2px;
       text-align: center;
@@ -29,38 +34,36 @@
 
   <script id="cabeceraImportDetallesPartidos" src="../cabeceraImportDetallesPartidos.js"></script>
 
-  <div class="container-fluid">
-
-
-    <div id="cabeceraCompeticion" class="row p-3 border-bottom">
-      <img class="col-auto" src="../../res/ligas/laliga.png" height="64" width="64" class="me-2">
-      <div class="container col">
-        <h5 class="mb-0 text-muted">Primera División Española</h4>
-          <h1>LaLiga</h1>
-      </div>
-    </div>
-
-    <br>
-
-    <ul class="nav nav-tabs justify-content-center mb-3">
-      <h1>Detalles del partido</h1>
-    </ul>
-
-    <div class="container" id="containerDetalles">
-      <div id="spinner" class="mb-5 d-flex justify-content-center">
-        <div class="spinner-border" role="status">
+  <main>
+    <div class="container-fluid">
+      <div id="cabeceraCompeticion" class="row p-3 border-bottom">
+        <img class="col-auto me-2" src="../../res/ligas/laliga.png" alt="Logo de LaLiga" height="64" width="64">
+        <div class="container col">
+          <p id="division" class="mb-0 text-muted">Primera División Española</p>
+            <h1>LaLiga</h1>
         </div>
       </div>
 
-      <div class="row justify-content-md-center" id="rowResultado">
+      <br>
+
+      <h1 id="headerDetalles">Detalles del partido</h1>
+
+      <div class="container" id="containerDetalles">
+        <div id="spinner" class="mb-5 d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+          </div>
+        </div>
+
+        <div class="row justify-content-md-center" id="rowResultado">
+        </div>
       </div>
+
+      <hr>
+
     </div>
 
-    <hr>
-
-  </div>
-
-  <script id="detalles-partidos-loader" src="../load-detalles-partidos.js"></script>
+    <script id="detalles-partidos-loader" src="../load-detalles-partidos.js"></script>
+  </main>
 
 
   <footer class="row row-cols-5 py-5 mt-5 border-top" style="color: white; background-color:black">
