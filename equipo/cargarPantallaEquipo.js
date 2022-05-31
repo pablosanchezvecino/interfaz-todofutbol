@@ -7,7 +7,6 @@ const equipoId = params.teamId;
 function add_favorite(teamId, username) {
     
     var user = JSON.parse(localStorage.getItem(username));
-    console.log(user)
     user.favoriteTeams.push(teamId)
     var userJSON = JSON.stringify(user)
     localStorage.setItem(username, userJSON);
@@ -46,9 +45,16 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
 })
 .then(promesaFetch => promesaFetch.json())
 .then(equipo => {
-    console.log(equipo)
+    //console.log(equipo)
     const nombre = equipo.name
-    const competicionA = equipo.activeCompetitions[0].code
+    var i = 0
+    while (i < equipo.activeCompetitions.length && escudo(equipo.activeCompetitions[i].code, nombre) === "") {
+        i++;
+    }
+    if (i >= equipo.activeCompetitions.length) {
+        alert('Este equipo no tiene competiciones válidas')
+    }
+    const competicionA = equipo.activeCompetitions[i].code
     const urlEscudo = equipo.crestUrl
 
     const cabeceraEquipo = document.getElementById('cabeceraEquipo')
@@ -141,6 +147,7 @@ function cargaPartidos(competicion) {
     .then(promesaFetch => promesaFetch.json())
     .then(partidos => {
         partidos.matches.reverse().forEach(partido => {
+
             const urlLocal = '../res/escudos/' + escudo(competicion, partido.homeTeam.name) + '.png'
             const urlVisitante = '../res/escudos/' + escudo(competicion, partido.awayTeam.name) + '.png'
 
