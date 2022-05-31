@@ -122,5 +122,6 @@ fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?
 
             footer.appendChild(fecha)
         })
+        document.getElementById('spinner').remove()
     })
 

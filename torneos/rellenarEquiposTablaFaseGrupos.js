@@ -58,6 +58,7 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
         const nombreGrupo = grupoA.group.split('_')
         document.title += ' '+nombreGrupo[1]
         document.getElementById('nombreGrupo').textContent += ' '+nombreGrupo[1]
+        document.getElementById('spinner').remove()
     })
 
     
