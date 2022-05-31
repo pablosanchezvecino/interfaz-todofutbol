@@ -55,7 +55,7 @@ document.write(`
           </div>
           <div class="col-2">
             <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="../pantalla_principal/pantalla_principal.html">
-              <img src="../house.png" style="vertical-align: middle;">
+              <img src="../res/house.png" style="vertical-align: middle;">
               <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
             </a>
             
@@ -65,7 +65,7 @@ document.write(`
             <form autocomplete="off">
               <div class="input-group">
                 <input type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-                <span class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0 ">Buscar</span>
+                <button class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0 ">Buscar</button>
               </div>
             </form>
           </div>
