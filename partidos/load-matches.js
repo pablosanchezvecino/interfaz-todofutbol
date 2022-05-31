@@ -140,7 +140,7 @@ console.log(partido)
             link.textContent = "Ver detalles del partido";
             link.ariaLabel = "Ver detalles del partido";
             link.addEventListener('click', function () {
-                location.href = '../../detalles-partidos.html?partido_id=' + partido.id
+                location.href = 'detalles-partidos.html?partido_id=' + partido.id
             }, false);
 
             footer.appendChild(link);
