@@ -98,4 +98,5 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
 
             })
         });
+        document.getElementById('spinner').remove()
     })
