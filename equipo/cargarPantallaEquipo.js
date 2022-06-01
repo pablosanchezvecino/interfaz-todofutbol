@@ -51,48 +51,42 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
     while (i < equipo.activeCompetitions.length && escudo(equipo.activeCompetitions[i].code, nombre) === "") {
         i++;
     }
-    if (i >= equipo.activeCompetitions.length) {
-        alert('Este equipo no tiene competiciones válidas')
-    }
-    const competicionA = equipo.activeCompetitions[i].code
     const urlEscudo = equipo.crestUrl
-
+    
     const cabeceraEquipo = document.getElementById('cabeceraEquipo')
-
+    
     const lista = document.createElement('ul')
     lista.className = 'list-group list-group-horizontal'
     cabeceraEquipo.appendChild(lista)
-
+    
     const li1 = document.createElement('li')
     li1.className = 'list-group-item border-0'
     lista.appendChild(li1)
-
+    
     const escudoImg = document.createElement('img')
     escudoImg.src = urlEscudo;
     escudoImg.height = '64'
     escudoImg.className = 'float-start text-end align-middle me-2'
     escudoImg.alt = 'Escudo de ' + nombre
-    //cabeceraEquipo.appendChild(escudoImg)
     li1.appendChild(escudoImg)
-
+    
     const li2 = document.createElement('li')
     li2.className = 'list-group-item border-0'
     lista.appendChild(li2)
-
+    
     const nombreEquipoDiv = document.createElement('div')
     nombreEquipoDiv.className = 'container'
-    //cabeceraEquipo.appendChild(nombreEquipoDiv)
     li2.appendChild(nombreEquipoDiv)
-
+    
     const equipoText =  document.createElement('h5')
     equipoText.className = 'mb-0 text-muted'
     equipoText.textContent = 'Equipo'
     nombreEquipoDiv.appendChild(equipoText)
-
+    
     const equipoNombre = document.createElement('h1')
     equipoNombre.textContent = nombre
     nombreEquipoDiv.appendChild(equipoNombre)
-
+    
     const li3 = document.createElement('li')
     li3.className = 'list-group-item border-0'
     lista.appendChild(li3)
@@ -115,7 +109,6 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         corazon.height = '64'
         corazon.alt = 'Botón de añadir equipo como favorito'
         corazonA.appendChild(corazon)
-        //nombreEquipoDiv.appendChild(corazonA)
         li3.appendChild(corazonA)
         
         const msg = document.createElement('label')
@@ -124,8 +117,15 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         li3.appendChild(msg);
         
         corazon.addEventListener("click", function () { cambiaEstado(this, msg) })
+        
+        const texto = document.getElementById('texto-partidos')
+        if (i >= equipo.activeCompetitions.length) {
+            texto.textContent = 'Este equipo no tiene partidos'
+        } else {
+            texto.textContent = 'Partidos'
+            cargaPartidos(equipo.activeCompetitions[i].code);
+        }
     }
-    cargaPartidos(competicionA);
 })
 
 let timeout;

@@ -5,36 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TodoFurbo - Equipo</title>
+    <title>TodoFurbo - EquiposFavoritos</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <style>
-        .card-footer {
-            background-color: black;
-            color: white;
-        }
-
-        #tarjeta {
-            background-color: whitesmoke;
-        }
-    </style>
-    <link rel="icon" href="../res/icon.png">
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
 </head>
-
 <body>
     <script src="cabeceraImportArthur.js"></script>
-    <main class="container-fluid row">
-        <section id="cabeceraEquipo" class="col border-bottom p-3"></section>
-        <section class="container p-2">
-            <br />
-            <h1 class="text-center" id="texto-partidos"></h1>
-            <br />
-            <div class="row row-cols-auto justify-content-center" id="partidos">
-            </div>
-        </section>
-    </main>
 
-    <footer class="row row-cols-5 py-5 mt-5 border-top" style="color: white; background-color: #212529">
+    <section id="cabeceraCompeticion" class="col border-bottom p-3">
+        <img src="https://image-service.onefootball.com/transform?w=43&h=43&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252FleagueColoredCompetition%252F128%252F5.png"
+            height="64" width="64" class="float-start text-end align-middle me-2" alt="Logo champions">
+        <div class="container">
+            <h5 class="mb-0 text-muted">Equipos</h5>
+            <h1>Favoritos</h1>
+        </div>
+    </section>
+
+    <section class="container-fluid overflow-auto">
+        <div class="row row-cols-auto" id="equipos-favoritos" style="justify-content: center;">
+        </div>
+    </section>
+        <footer class="row row-cols-5 py-5 mt-5 border-top" style="color: white; background-color: #212529">        
         <div class="col">
 
             <p style="color: white; text-align: center; vertical-align: middle;">Todofútbol © 2022</p>
@@ -92,11 +85,10 @@
         </div>
     </footer>
 
-    <script src="cargarPantallaEquipo.js"></script>
+    <script src="cargarEquiposFavoritos.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
