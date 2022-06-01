@@ -7,7 +7,7 @@ fetch('http://api.football-data.org/v2/teams?limit=10', {
 .then(promesaFetch => promesaFetch.json())
 .then(equipos => {
     const seccionEquipos = document.getElementById('seccionEquipos')
-    console.log(equipos)
+    //console.log(equipos)
     equipos.teams.forEach(equipo => {
         const nombre = equipo.name
 
