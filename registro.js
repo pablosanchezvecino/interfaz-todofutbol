@@ -3,6 +3,7 @@ const passError = document.getElementById("passError");
 const pass2Error = document.getElementById("pass2Error");
 const userError = document.getElementById("userError");
 const noigualesError = document.getElementById("noigualesError");
+const existeError = document.getElementById("existeError");
 
 
 boton.addEventListener("click", (e) => {
@@ -12,6 +13,7 @@ boton.addEventListener("click", (e) => {
     const password2 = document.getElementById("password2");
     
     noigualesError.hidden=true;
+    existeError.hidden = true;
 
     if(username.value==="" && password.value==="" && password2.value===""){
         passError.hidden=false;
@@ -50,9 +52,13 @@ boton.addEventListener("click", (e) => {
         passError.hidden=true;
         pass2Error.hidden=true;
         userError.hidden=true;
-        registrar_usuario(username.value, password.value);
-        validar_login(username.value, password.value);
-        window.location.replace("pantalla_principal/pantalla_principal.html");
+        
+        if(registrar_usuario(username.value, password.value)) {
+            validar_login(username.value, password.value);
+            window.location.replace("pantalla_principal/pantalla_principal.html");
+        }
+        
+        
     }
 
     
@@ -74,8 +80,11 @@ function registrar_usuario(username, password) {
 
     if (localStorage.getItem(username)) {
         console.log("El nombre de usuario ya está cogido");
+        existeError.hidden=false;
+        return false;
     } else {
         localStorage.setItem(username, JSON.stringify(user));
+        return true;
     }
 
 
