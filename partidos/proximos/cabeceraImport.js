@@ -51,21 +51,21 @@ body {
 <div class="row d-flex flex-wrap align-items-center">
     <div class="col-2">
           
-      <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+      <a class="btn btn-dark" href="../../pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
     </div>
     <div class="col-2">
-      <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="pantalla_principal/pantalla_principal.html">
-        <img src="res/house.png" style="vertical-align: middle;">
+      <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="../../pantalla_principal/pantalla_principal.html">
+        <img src="../../res/house.png" alt="Icono de casa" style="vertical-align: middle;">
         <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
       </a>
       
     </div>  
-  <!--<h2 class="col-3">TodoFutbol</h2>-->
     <div class="col-4 busqueda">
         <div class="input-group">
-          <input autocomplete="off type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-          <button class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff ">Buscar</button>
+          <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
+          <button class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff; ">Buscar</button>        
         </div>
+        
     </div>
 
 
@@ -73,12 +73,11 @@ body {
       <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
       <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Partidos</a></li>
-        <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
+        <li><a class="dropdown-item" href="#">Equipos</a></li>
       </ul>
     </div>
     <div class="col-2 d-flex flex-wrap float-end">
-        <!--<input type="button" aria-describedby="login" class="form-control">-->
-        <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="login.html">Iniciar Sesion</a>
+        <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../../login.html">Iniciar Sesion</a>
         <button hidden class="input-group-text" id="logout">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
@@ -115,7 +114,8 @@ logout.addEventListener("click", (e)=>{
 
     e.preventDefault();
     sessionStorage.removeItem("active");
-    window.location.replace("pantalla_principal/pantalla_principal.html");
+    window.location.replace("../../pantalla_principal/pantalla_principal.html");
+    alert("Sesion cerrada");
 
 })
 
@@ -148,7 +148,7 @@ const ht = new Map();
       ht.set("Chelsea", 61);
       ht.set("Everton", 62);
       ht.set("Liverpool", 64);
-      ht.set("Manchester City", 65);
+      ht.set("Machester City", 65);
       ht.set("Manchester United", 66);
       ht.set("Newcastle", 67);
       ht.set("Norwich", 68);
@@ -239,31 +239,31 @@ const ht = new Map();
           id = ht.get(myInput.value);
           
           if(id==="PD"){
-              window.location.replace("clasificaciones/laliga.html");
+            window.location.replace("../clasificaciones/laliga.html");
           } else
           if(id==="FL1"){
-              window.location.replace("clasificaciones/ligue-1.html");
+              window.location.replace("../clasificaciones/ligue-1.html");
           } else
           if(id==="PL"){
-              window.location.replace("clasificaciones/premier-league.html");
+              window.location.replace("../clasificaciones/premier-league.html");
           } else
           if(id==="BL1"){
-              window.location.replace("clasificaciones/bundesliga.html");
+              window.location.replace("../clasificaciones/bundesliga.html");
           }else
           if(id==="SA"){
-              window.location.replace("clasificaciones/serie-a.html");
+              window.location.replace("../clasificaciones/serie-a.html");
           }else 
       
           if(id==="CL"){
-              window.location.replace("torneos/champions.html?competicion=CL");
+              window.location.replace("../torneos/champions.html?competicion=CL");
           }else 
           if(id==="WC"){
-              window.location.replace("torneos/mundial.html?competicion=WC");
+              window.location.replace("../torneos/mundial.html?competicion=WC");
           }else 
           
           if(id!==undefined){
               console.log(id);
-              window.location.replace("equipo/equipo.html?teamId="+id);
+              window.location.replace("../equipo/equipo.html?teamId="+id);
           }else {
             alert("No se encuentra el equipo / competicion introducida");
           }
