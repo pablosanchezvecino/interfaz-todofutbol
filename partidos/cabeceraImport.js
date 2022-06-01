@@ -148,7 +148,7 @@ const ht = new Map();
       ht.set("Chelsea", 61);
       ht.set("Everton", 62);
       ht.set("Liverpool", 64);
-      ht.set("Machester City", 65);
+      ht.set("Manchester City", 65);
       ht.set("Manchester United", 66);
       ht.set("Newcastle", 67);
       ht.set("Norwich", 68);
