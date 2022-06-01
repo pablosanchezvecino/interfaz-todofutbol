@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <title>Ligue 1 - Top jugadores</title>
+    <link rel="icon" href="../res/icon.png">
+</head>
+
+<body>
+
+    <script src="cabeceraImport.js"></script>
+
+
+    <main>
+        <div class="container-fluid">
+
+
+            <div id="cabeceraCompeticion" class="row p-3 border-bottom pt-4">
+                <img class="col-auto me-2" src="../res/ligas/ligue-1-oscuro.png" alt="Logo de la Ligue 1" height="64"
+                    width="64">
+                <div class="container col">
+                    <h4 class="mb-0 text-muted">Primera División Francesa</h4>
+                    <h1>Ligue 1</h1>
+                </div>
+            </div>
+
+            <br>
+
+            <ul class="nav nav-tabs justify-content-center mb-3">
+                <li class="nav-item">
+                    <a class="nav-link link-dark" href="../clasificaciones/ligue-1.html">
+                        <h1>Clasificación</h1>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link link-dark dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">
+                        <h1 style="display: inline">Partidos</h1>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../partidos/recientes/ligue-1.html">
+                                <h4>Partidos recientes</h4>
+                            </a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="../partidos/proximos/ligue-1.html">
+                                <h4>Partidos próximos</h4>
+                            </a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active disabled" aria-current="page" href="#">
+                        <h1>Top jugadores</h1>
+                    </a>
+                </li>
+            </ul>
+
+            <div id="spinner" class="mb-5 d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                </div>
+            </div>
+
+            <div class="row row-cols-auto justify-content-center">
+
+
+                <div class="col">
+                    <h2 class="mb-6" style="text-align: center">Máximos goleadores</h2>
+                    <div class="table-responsive table-hover">
+                        <table id="tabla-goleadores" class="table table-fixed" tabindex="0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Jugador</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Equipo</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Goles</th>
+                                </tr>
+                            </thead>
+
+
+
+                            <tbody id="jugadores">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h2 class="mb-6" style="text-align: center">Máximos asistentes</h2>
+                    <div class="table-responsive table-hover">
+                        <table id="tabla-asistentes" class="table table-fixed" tabindex="0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" style="text-align: center; vertical-align: middle;"></th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Jugador</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Equipo</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Asistencias</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="asistentes">
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">1</th>
+                                    <td style="text-align: center; vertical-align: middle;">Kylian Mbappé</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/psg.png"
+                                                alt="Escudo del Paris Saint-Germain" height="30" /></div>Paris
+                                        Saint-Germain
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">17</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">2</th>
+                                    <td style="text-align: center; vertical-align: middle;">Lionel Messi</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/psg.png"
+                                                alt="Escudo del Paris Saint-Germain" height="30" /></div>Paris
+                                        Saint-Germain
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">14</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">3</th>
+                                    <td style="text-align: center; vertical-align: middle;">Benjamin Bourigeaud</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/rennes.png" alt="Escudo del Rennes"
+                                                height="30" /></div>Rennes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">12</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">4</th>
+                                    <td style="text-align: center; vertical-align: middle;">Jonathan Clauss</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/lens.png" alt="Escudo del Lens"
+                                                height="30" /></div>Lens
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">11</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">5</th>
+                                    <td style="text-align: center; vertical-align: middle;">Dimitri Payet</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/marsella.png"
+                                                alt="Escudo del Olympique de Marsella" height="30" /></div>Olympique de
+                                        Marsella
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">10</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">6</th>
+                                    <td style="text-align: center; vertical-align: middle;">Hamari Traoré</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/rennes.png" alt="Escudo del Rennes"
+                                                height="30" /></div>Rennes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">10</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">7</th>
+                                    <td style="text-align: center; vertical-align: middle;">Kevin Volland</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/monaco.png" alt="Escudo del Monaco"
+                                                height="30" /></div>Monaco
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">9</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">8</th>
+                                    <td style="text-align: center; vertical-align: middle;">Amine Gouiri</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/nice.png" alt="Escudo del Niza"
+                                                height="30" /></div>Niza
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">9</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">9</th>
+                                    <td style="text-align: center; vertical-align: middle;">Lovro Majer</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/rennes.png" alt="Escudo del Rennes"
+                                                height="30" /></div>Rennes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">8</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">10</th>
+                                    <td style="text-align: center; vertical-align: middle;">Moses Simon</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/nantes.png" alt="Escudo del Nantes"
+                                                height="30" /></div>Nantes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">8</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <h2 class="mb-6" style="text-align: center">Mejores porteros</h2>
+                    <div class="table-responsive table-hover">
+                        <table id="tabla-clasificacion" class="table table-fixed" tabindex="0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" style="text-align: center; vertical-align: middle;"></th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Jugador</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Equipo</th>
+                                    <th style="text-align: center; vertical-align: middle;" scope="col">Goles
+                                        encajados/Partidos jugados
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="porteros">
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">1</th>
+                                    <td style="text-align: center; vertical-align: middle;">Keylor Navas</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/psg.png"
+                                                alt="Escudo del Paris Saint-Germain" height="30" /></div>Paris
+                                        Saint-Germain
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">0,86</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">2</th>
+                                    <td style="text-align: center; vertical-align: middle;">Walter Benítez</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/nice.png" alt="Escudo del Niza"
+                                                height="30" /></div>Niza
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">0,95</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">3</th>
+                                    <td style="text-align: center; vertical-align: middle;">Alfred Gomis</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/rennes.png" alt="Escudo del Rennes"
+                                                height="30" /></div>Rennes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">4</th>
+                                    <td style="text-align: center; vertical-align: middle;">Alexander Nübel</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/monaco.png" alt="Escudo del Mónaco"
+                                                height="30" /></div>Mónaco
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,05</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">5</th>
+                                    <td style="text-align: center; vertical-align: middle;">Pau López</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/marsella.png"
+                                                alt="Escudo del Olympique de Marsella" height="30" /></div>Olympique de
+                                        Marsella
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,07</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">6</th>
+                                    <td style="text-align: center; vertical-align: middle;">Predrag Rajkovic</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/stade-de-reims.png" alt="Escudo del Reims"
+                                                height="30" /></div>Reims
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,16</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">7</th>
+                                    <td style="text-align: center; vertical-align: middle;">Matz Sels</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/strasbourg.png"
+                                                alt="Escudo del Estrasburgo" height="30" /></div>Estrasburgo
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,16</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">8</th>
+                                    <td style="text-align: center; vertical-align: middle;">Jean Leca</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/lens.png" alt="Escudo del Lens"
+                                                height="30" /></div>Lens
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,22</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">9</th>
+                                    <td style="text-align: center; vertical-align: middle;">Alban Lafont</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/nantes.png" alt="Escudo del Nantes"
+                                                height="30" /></div>Nantes
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,26</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row" style="text-align: center; vertical-align: middle;">10</th>
+                                    <td style="text-align: center; vertical-align: middle;">Anthony Lopes</td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <div><img src="../res/escudos/ligue-1/lyon.png"
+                                                alt="Escudo del Olympique de Lyon" height="30" /></div>Olympique de Lyon
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">1,32</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+    </main>
+
+
+    <footer class="row row-cols-5 py-5 mt-5 border-top" style="color: white; background-color:#212529">
+        <div class="col">
+
+            <p style="color: white; text-align: center; vertical-align: middle;">Todofútbol © 2022</p>
+        </div>
+
+        <div class="col">
+
+        </div>
+
+        <div class="col">
+            <h5>Ligas</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;"><img
+                            src="https://crests.football-data.org/760.svg" alt="Bandera de España" width="20">
+                        LaLiga</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;"><img
+                            src="https://crests.football-data.org/773.svg" alt="Bandera de Francia" width="20"> Ligue
+                        1</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;"><img
+                            src="https://crests.football-data.org/759.svg" alt="Bandera de Alemania" width="20">
+                        Bundesliga</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;"><img
+                            src="https://native-stats.org/assets/flags/ITA.svg" alt="Bandera de Italia" width="20">
+                        Serie A</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;"><img
+                            src="https://native-stats.org/assets/flags/ENG.svg" alt="Bandera de Inglaterra" width="20">
+                        Premier
+                        League</a></li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <h5>Torneos</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;">Champions League</a>
+                </li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;">Mundial Qatar 2022</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <h5>Ayuda</h5>
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0" style="color: white;">Preguntas
+                        frecuentes</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script id="table-loader" src="load-scorers.js" competition="FL1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
