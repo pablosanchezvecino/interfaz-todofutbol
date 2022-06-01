@@ -12,26 +12,62 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
     .then(promesaFetch => promesaFetch.json())
     .then(partido => {
 
-        //alert(partido.match.competition.name)
-
         var competicion
+        var competicionLogo 
         if(partido.match.competition.name === 'Premier League'){
             competicion = 'PL'
+            competicionLogo = 'premier-league-chico'
+            division = "Inglesa"
         } else if(partido.match.competition.name === 'Primera Division'){
             competicion = 'PD'
+            competicionLogo = 'laliga'
+            division = "Española"
         } else if(partido.match.competition.name === 'Serie A'){
             competicion = 'SA'
+            competicionLogo = 'serie-a'
+            division = "Italiana"
         } else if(partido.match.competition.name === 'Bundesliga'){
             competicion = 'BL1'
+            competicionLogo = 'bundesliga'
+            division = "Alemana"
         } else if(partido.match.competition.name === 'Ligue 1'){
             competicion = 'FL1'
+            competicionLogo = 'ligue-1-oscuro'
+            division = "Francesa"
         }
 
         const urlLocal = '../../res/escudos/' + escudo(competicion, partido.match.homeTeam.name) + '.png'
         const urlVisitante = '../../res/escudos/' + escudo(competicion, partido.match.awayTeam.name) + '.png'
 
+
+        const cabeceraCompeticion = document.getElementById('cabeceraCompeticion')
+        const imageLiga = document.createElement('img')
+        imageLiga.className = 'col-auto me-2'
+        imageLiga.src = '../../res/ligas/' + competicionLogo + '.png'
+        imageLiga.alt = 'Logo de ' + partido.match.competition.name
+        imageLiga.height = '64'
+        imageLiga.width = '64'
+        cabeceraCompeticion.appendChild(imageLiga)
+
+        const divContenedor = document.createElement('div')
+        divContenedor.className = 'container col'
+        const textoDivision = document.createElement('p')
+        textoDivision.className = 'mb-0 text-muted'
+        textoDivision.id = 'division'
+        textoDivision.textContent = 'Primera División ' + division
+        divContenedor.appendChild(textoDivision)
+
+        const liga = document.createElement('h1')
+        if(partido.match.competition.name === 'Primera Division')
+            liga.textContent = 'LaLiga'
+         else 
+            liga.textContent = partido.match.competition.name
+
+        divContenedor.appendChild(liga)
+        cabeceraCompeticion.appendChild(divContenedor)
+
+
         const row = document.getElementById('rowResultado')
-        const containerDetalles = document.getElementById('containerDetalles')
 
         const col = document.createElement('div')
         col.className = 'col-lg-1 text-center'
@@ -74,6 +110,8 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
         col3.appendChild(figure2)
 
 
+        const containerDetalles = document.getElementById('containerDetalles')
+
         const ganador = document.createElement('p')
         var resultado
         if(partido.match.score.winner === "DRAW")
@@ -94,7 +132,7 @@ fetch('http://api.football-data.org/v2/matches/' + partido_id, {
 
         if(partido.match.venue != null){
             const estadio = document.createElement('p')
-            estadio.innerHTML = '<strong>' + "Estadio: " + '</strong>' + partido.match.venue
+            estadio.innerHTML = "<b>Estadio: </b>" + partido.match.venue
             containerDetalles.appendChild(estadio)
         }
 
