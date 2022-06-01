@@ -101,7 +101,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         const corazonA = document.createElement('a')
         
         const corazon = document.createElement('img')
-
+        
         const username = JSON.parse(sessionStorage.getItem('active')).username
         const favoritos = get_favorites(username)
         if (favoritos.includes(equipo.id)) {
@@ -117,23 +117,41 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         corazonA.appendChild(corazon)
         //nombreEquipoDiv.appendChild(corazonA)
         li3.appendChild(corazonA)
-            
-        corazon.addEventListener("click", function (e) { cambiaEstado(this) })
+        
+        const msg = document.createElement('label')
+        msg.hidden = true
+        corazonA.appendChild(msg);
+        
+        corazon.addEventListener("click", function () { cambiaEstado(this, msg) })
     }
     cargaPartidos(competicionA);
 })
 
-function cambiaEstado(corazon) {
+let timeout;
+
+function cambiaEstado(corazon, msg) {
     if (corazon.estado === 'relleno' || corazon.estado === 'rellenando') {
         corazon.src = '../res/vaciar.gif'
         corazon.estado = 'vaciando'
         let username = JSON.parse(sessionStorage.getItem('active')).username
         remove_favorite(parseInt(equipoId), username)
+        msg.textContent = 'Equipo eliminado de favoritos'
+        msg.hidden = false
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            msg.hidden = true
+        }, 2000)
     } else if (corazon.estado === 'vacio' || corazon.estado == 'vaciando') {
         corazon.src = '../res/rellenar.gif'
         corazon.estado = 'rellenando'
         let username = JSON.parse(sessionStorage.getItem('active')).username
         add_favorite(parseInt(equipoId), username)
+        msg.textContent = 'Equipo añadido a favoritos'
+        msg.hidden = false
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            msg.hidden = true
+        }, 2000)
     }
 }
 
