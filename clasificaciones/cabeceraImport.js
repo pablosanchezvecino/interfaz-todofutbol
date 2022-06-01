@@ -64,7 +64,7 @@ body {
     <div class="col-4 busqueda">
         <div class="input-group">
           <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-          <button  class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0 ">Buscar</button>
+          <button  class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff ">Buscar</button>
         </div>
     </div>
 
