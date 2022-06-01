@@ -120,7 +120,8 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         
         const msg = document.createElement('label')
         msg.hidden = true
-        corazonA.appendChild(msg);
+        msg.className = 'px-3'
+        li3.appendChild(msg);
         
         corazon.addEventListener("click", function () { cambiaEstado(this, msg) })
     }
