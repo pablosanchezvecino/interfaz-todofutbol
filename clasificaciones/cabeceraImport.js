@@ -69,14 +69,14 @@ body {
     </div>
 
 
-    <div class="col-2">
+    <div class="col-1">
       <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
       <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Partidos</a></li>
         <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
       </ul>
     </div>
-    <div class="col-2 d-flex flex-wrap float-end">
+    <div class="col-3 d-flex flex-wrap justify-content-end pe-5">
         <!--<input type="button" aria-describedby="login" class="form-control">-->
         <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Iniciar Sesion</a>
         <button hidden class="input-group-text" id="logout">
