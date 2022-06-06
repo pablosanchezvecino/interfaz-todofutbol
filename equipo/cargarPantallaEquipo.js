@@ -119,14 +119,14 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         li3.appendChild(msg);
         
         corazon.addEventListener("click", function () { cambiaEstado(this, msg) })
-        
-        const texto = document.getElementById('texto-partidos')
-        if (i >= equipo.activeCompetitions.length) {
-            texto.textContent = 'Este equipo no tiene partidos'
-        } else {
-            texto.textContent = 'Partidos'
-            cargaPartidos(equipo.activeCompetitions[i].code);
-        }
+    }
+
+    const texto = document.getElementById('texto-partidos')
+    if (i >= equipo.activeCompetitions.length) {
+        texto.textContent = 'Este equipo no tiene partidos'
+    } else {
+        texto.textContent = 'Partidos'
+        cargaPartidos(equipo.activeCompetitions[i].code);
     }
 })
 
