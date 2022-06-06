@@ -1,3 +1,5 @@
+const { text } = require("stream/consumers");
+
 const dropdown = document.getElementById("dropdown");
 
 if(sessionStorage.getItem("active")){
@@ -12,7 +14,17 @@ const logout = document.getElementById("logout");
 
 if(sessionStorage.getItem("active")){
     login.href="";
-    login.textContent="Sesion iniciada";
+    username = JSON.parse(sessionStorage.getItem("active")).username;
+    if(text.length>=9){
+        shortUsername="";
+        for(i=0; i<=5; i++){
+            shortUsername+=username[i];
+        }
+        login.textContent="Bienvenido, "+shortUsername;
+    } else {
+        login.textContent="Bienvenido, "+username;
+    }
+    
     logout.hidden=false;
 }
 

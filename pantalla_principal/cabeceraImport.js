@@ -62,22 +62,22 @@ document.write(`
           </div>  
         <!--<h2 class="col-3">TodoFutbol</h2>-->
           <div class="col-4 busqueda">
-            <div class="input-group">
+            <form class="input-group">
               <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-              <button class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff">Buscar</button>
-            </div>
+              <button type="submit" class="btn btn-outline-secondary fs-5" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff">Buscar</button>
+            </form>
           </div>
 
 
           <div class="col-2">
-            <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
+            <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle fs-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
             <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">Partidos</a></li>
               <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
             </ul>
           </div>
           <div class="col-2 d-flex flex-wrap float-end">
-              <!--<input type="button" aria-describedby="login" class="form-control">-->
+              
               <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Acceder</a>
               <button hidden class="input-group-text" id="logout">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -107,7 +107,20 @@ document.write(`
       const logout = document.getElementById("logout");
       if(sessionStorage.getItem("active")!==null){
           login.href="";
-          login.textContent=JSON.parse(sessionStorage.getItem("active")).username;
+          username = JSON.parse(sessionStorage.getItem("active")).username;
+          if(username.length>=9){
+              shortUsername="";
+              for(i=0; i<=5; i++){
+                shortUsername+=username[i];
+              }
+              for(i=0; i<3; i++){
+                shortUsername+=".";
+              }
+              login.textContent="Bienvenido, "+shortUsername;
+              login.title="Bienvenido, "+username;
+          } else {
+              login.textContent="Bienvenido, "+username;
+          }
           logout.hidden=false;
       }
 
@@ -332,11 +345,11 @@ document.write(`
               addActive(x);
             } else if (e.keyCode == 13) {
               /*If the ENTER key is pressed, prevent the form from being submitted,*/
-              e.preventDefault();
+              /*e.preventDefault();
               if (currentFocus > -1) {
-                /*and simulate a click on the "active" item:*/
+                //and simulate a click on the "active" item:
                 if (x) x[currentFocus].click();
-              }
+              }*/
             }
         });
         function addActive(x) {
