@@ -49,9 +49,9 @@ document.write(`
     <header class="container-fluid text-bg-dark px-2 py-2 ">
         
       <div class="row d-flex flex-wrap align-items-center">
-          <div class="col-2">
+          <div class="col-2" style="vertical-align: middle;">
                 
-            <a class="btn btn-dark" href="./pantalla_principal.html"><h2>TodoFutbol</h2></a>  
+            <a class="btn btn-dark style="vertical-align: middle;"" href="./pantalla_principal.html"><h2 style="vertical-align: middle;">TodoFutbol</h2></a>  
           </div>
           <div class="col-2">
             <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="./pantalla_principal.html">
@@ -62,21 +62,21 @@ document.write(`
           </div>  
         <!--<h2 class="col-3">TodoFutbol</h2>-->
           <div class="col-4 busqueda">
-            <form class="input-group">
+            <div class="input-group" id="form">
               <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
               <button type="submit" class="btn btn-outline-secondary fs-5" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff">Buscar</button>
-            </form>
+            </div>
           </div>
 
 
-          <div class="col-2">
-            <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle fs-5" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
+          <div class="col-1">
+            <button hidden id="dropdown" class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
             <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
               <li><a class="dropdown-item" href="#">Partidos</a></li>
               <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
             </ul>
           </div>
-          <div class="col-2 d-flex flex-wrap float-end">
+          <div class="col-3 d-flex flex-wrap justify-content-end pe-5">
               
               <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Acceder</a>
               <button hidden class="input-group-text" id="logout" title="Cerrar sesión">
@@ -132,6 +132,7 @@ document.write(`
           alert("Sesion cerrada");
 
       })
+
 
       const ht = new Map();
       ht.set("La Liga", "PD")
@@ -322,6 +323,38 @@ document.write(`
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
+
+                    id = ht.get(myInput.value);
+          
+                    if(id==="PD"){
+                      window.location.replace("../clasificaciones/laliga.html");
+                    } else
+                    if(id==="FL1"){
+                        window.location.replace("../clasificaciones/ligue-1.html");
+                    } else
+                    if(id==="PL"){
+                        window.location.replace("../clasificaciones/premier-league.html");
+                    } else
+                    if(id==="BL1"){
+                        window.location.replace("../clasificaciones/bundesliga.html");
+                    }else
+                    if(id==="SA"){
+                        window.location.replace("../clasificaciones/serie-a.html");
+                    }else 
+                
+                    if(id==="CL"){
+                        window.location.replace("../torneos/champions.html?competicion=CL");
+                    }else 
+                    if(id==="WC"){
+                        window.location.replace("../torneos/mundial.html?competicion=WC");
+                    }else 
+                    
+                    if(id!==undefined){
+                        console.log(id);
+                        window.location.replace("../equipo/equipo.html?teamId="+id);
+                    }else {
+                      alert("No se encuentra el equipo / competicion introducida");
+                    }
                 });
                 a.appendChild(b);
               }
@@ -345,11 +378,44 @@ document.write(`
               addActive(x);
             } else if (e.keyCode == 13) {
               /*If the ENTER key is pressed, prevent the form from being submitted,*/
-              /*e.preventDefault();
+              e.preventDefault();
               if (currentFocus > -1) {
                 //and simulate a click on the "active" item:
                 if (x) x[currentFocus].click();
-              }*/
+              }
+
+              id = ht.get(myInput.value);
+          
+              if(id==="PD"){
+                window.location.replace("../clasificaciones/laliga.html");
+              } else
+              if(id==="FL1"){
+                  window.location.replace("../clasificaciones/ligue-1.html");
+              } else
+              if(id==="PL"){
+                  window.location.replace("../clasificaciones/premier-league.html");
+              } else
+              if(id==="BL1"){
+                  window.location.replace("../clasificaciones/bundesliga.html");
+              }else
+              if(id==="SA"){
+                  window.location.replace("../clasificaciones/serie-a.html");
+              }else 
+          
+              if(id==="CL"){
+                  window.location.replace("../torneos/champions.html?competicion=CL");
+              }else 
+              if(id==="WC"){
+                  window.location.replace("../torneos/mundial.html?competicion=WC");
+              }else 
+              
+              if(id!==undefined){
+                  console.log(id);
+                  window.location.replace("../equipo/equipo.html?teamId="+id);
+              }else {
+                alert("No se encuentra el equipo / competicion introducida");
+              }
+
             }
         });
         function addActive(x) {

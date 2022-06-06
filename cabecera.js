@@ -2,6 +2,7 @@ const { text } = require("stream/consumers");
 
 const dropdown = document.getElementById("dropdown");
 
+
 if(sessionStorage.getItem("active")){
     sesion = sessionStorage.getItem("active");
     dropdown.hidden=false;
@@ -28,6 +29,40 @@ if(sessionStorage.getItem("active")){
     logout.hidden=false;
 }
 
+const form = document.getElementById("form");
+form.addEventListener("submit", (e)=>{
+    id = ht.get(myInput.value);
+
+    if(id==="PD"){
+        window.location.replace("clasificaciones/laliga.html");
+    } else
+    if(id==="FL1"){
+        window.location.replace("clasificaciones/ligue-1.html");
+    } else
+    if(id==="PL"){
+        window.location.replace("clasificaciones/premier-league.html");
+    } else
+    if(id==="BL1"){
+        window.location.replace("clasificaciones/bundesliga.html");
+    }else
+    if(id==="SA"){
+        window.location.replace("clasificaciones/serie-a.html");
+    }else 
+
+    if(id==="CL"){
+        window.location.replace("torneos/champions.html?competicion=CL");
+    }else 
+    if(id==="WC"){
+        window.location.replace("torneos/mundial.html?competicion=WC");
+    }else 
+    
+    if(id!==undefined){
+        console.log(id);
+        window.location.replace("equipo/equipo.html?teamId="+id);
+    }else {
+        alert("No se encuentra el equipo / competicion introducida");
+      }
+})
 
 logout.addEventListener("click", (e)=>{
 

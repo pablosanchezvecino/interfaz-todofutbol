@@ -69,14 +69,14 @@ body {
     </div>
 
 
-    <div class="col-2">
+    <div class="col-1">
       <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Equipos Favoritos </button>
       <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Partidos</a></li>
         <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
       </ul>
     </div>
-    <div class="col-2 d-flex flex-wrap float-end">
+    <div class="col-3 d-flex flex-wrap justify-content-end pe-5">
         <!--<input type="button" aria-describedby="login" class="form-control">-->
         <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Iniciar Sesion</a>
         <button hidden class="input-group-text" id="logout">
@@ -107,7 +107,20 @@ const login = document.getElementById("login");
 const logout = document.getElementById("logout");
 if(sessionStorage.getItem("active")!==null){
     login.href="";
-    login.textContent="Sesion iniciada";
+    username = JSON.parse(sessionStorage.getItem("active")).username;
+          if(username.length>=9){
+              shortUsername="";
+              for(i=0; i<=5; i++){
+                shortUsername+=username[i];
+              }
+              for(i=0; i<3; i++){
+                shortUsername+=".";
+              }
+              login.textContent="Bienvenido, "+shortUsername;
+              login.title="Bienvenido, "+username;
+          } else {
+              login.textContent="Bienvenido, "+username;
+          }
     logout.hidden=false;
 }
 
@@ -309,6 +322,38 @@ function autocomplete(inp, arr) {
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
+
+              id = ht.get(myInput.value);
+    
+              if(id==="PD"){
+                window.location.replace("../clasificaciones/laliga.html");
+              } else
+              if(id==="FL1"){
+                  window.location.replace("../clasificaciones/ligue-1.html");
+              } else
+              if(id==="PL"){
+                  window.location.replace("../clasificaciones/premier-league.html");
+              } else
+              if(id==="BL1"){
+                  window.location.replace("../clasificaciones/bundesliga.html");
+              }else
+              if(id==="SA"){
+                  window.location.replace("../clasificaciones/serie-a.html");
+              }else 
+          
+              if(id==="CL"){
+                  window.location.replace("../torneos/champions.html?competicion=CL");
+              }else 
+              if(id==="WC"){
+                  window.location.replace("../torneos/mundial.html?competicion=WC");
+              }else 
+              
+              if(id!==undefined){
+                  console.log(id);
+                  window.location.replace("../equipo/equipo.html?teamId="+id);
+              }else {
+                alert("No se encuentra el equipo / competicion introducida");
+              }
           });
           a.appendChild(b);
         }
@@ -334,9 +379,42 @@ function autocomplete(inp, arr) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
         if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
+          //and simulate a click on the "active" item:
           if (x) x[currentFocus].click();
         }
+
+        id = ht.get(myInput.value);
+    
+        if(id==="PD"){
+          window.location.replace("../clasificaciones/laliga.html");
+        } else
+        if(id==="FL1"){
+            window.location.replace("../clasificaciones/ligue-1.html");
+        } else
+        if(id==="PL"){
+            window.location.replace("../clasificaciones/premier-league.html");
+        } else
+        if(id==="BL1"){
+            window.location.replace("../clasificaciones/bundesliga.html");
+        }else
+        if(id==="SA"){
+            window.location.replace("../clasificaciones/serie-a.html");
+        }else 
+    
+        if(id==="CL"){
+            window.location.replace("../torneos/champions.html?competicion=CL");
+        }else 
+        if(id==="WC"){
+            window.location.replace("../torneos/mundial.html?competicion=WC");
+        }else 
+        
+        if(id!==undefined){
+            console.log(id);
+            window.location.replace("../equipo/equipo.html?teamId="+id);
+        }else {
+          alert("No se encuentra el equipo / competicion introducida");
+        }
+
       }
   });
   function addActive(x) {
