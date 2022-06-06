@@ -21,6 +21,7 @@ fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', 
 
             const link = articuloGrupo.appendChild(document.createElement('a'))
             link.classList = 'text-reset text-decoration-none'
+            link.title = 'Mostrar detalles'
             if(competicion === 'CL'){
                 link.href = 'faseGrupoChampions.html?grupo='+grupo.group+'&competicion='+competicion
             }
