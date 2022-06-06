@@ -280,6 +280,8 @@ function cargaPartidos(competicion) {
             footer.appendChild(fecha)
 
             var link = document.createElement('button');
+            link.className = "btn btn-outline-secondary"
+            link.style = "--bs-btn-color: #ffffff; border: 2px solid #d4d4d4; background-color: #181818;"
             link.textContent = "Ver detalles del partido";
             link.ariaLabel = "Ver detalles del partido";
             link.addEventListener('click', function () {
