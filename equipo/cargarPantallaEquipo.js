@@ -95,7 +95,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         const corazonA = document.createElement('a')
         
         const corazon = document.createElement('img')
-        
+        corazon.tabIndex = "0"
         const username = JSON.parse(sessionStorage.getItem('active')).username
         const favoritos = get_favorites(username)
         if (favoritos.includes(equipo.id)) {
@@ -119,6 +119,7 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         li3.appendChild(msg);
         
         corazon.addEventListener("click", function () { cambiaEstado(this, msg) })
+        corazon.addEventListener("keydown", function (e) { if (e.key == 'Enter') cambiaEstado(this, msg) })
     }
 
     const texto = document.getElementById('texto-partidos')
