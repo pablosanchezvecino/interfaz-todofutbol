@@ -100,14 +100,16 @@ fetch('http://api.football-data.org/v2/teams/' + equipoId, {
         const favoritos = get_favorites(username)
         if (favoritos.includes(equipo.id)) {
             corazon.src = '../res/relleno.gif'
+            corazonA.title = 'Borrar equipo de favoritos'
             corazon.estado = 'relleno'
         } else {
             corazon.src = '../res/vacio.gif'
+            corazonA.title = 'Añadir equipo a favoritos'
             corazon.estado = 'vacio'
         } 
         corazon.width = '64'
         corazon.height = '64'
-        corazon.alt = 'Botón de añadir equipo como favorito'
+        corazon.alt = 'Botón de añadir o borrar equipo como favorito'
         corazonA.appendChild(corazon)
         li3.appendChild(corazonA)
         
@@ -134,6 +136,7 @@ function cambiaEstado(corazon, msg) {
     if (corazon.estado === 'relleno' || corazon.estado === 'rellenando') {
         corazon.src = '../res/vaciar.gif'
         corazon.estado = 'vaciando'
+        corazon.parentNode.title = 'Añadir equipo a favoritos'
         let username = JSON.parse(sessionStorage.getItem('active')).username
         remove_favorite(parseInt(equipoId), username)
         msg.textContent = 'Equipo eliminado de favoritos'
@@ -145,6 +148,7 @@ function cambiaEstado(corazon, msg) {
     } else if (corazon.estado === 'vacio' || corazon.estado == 'vaciando') {
         corazon.src = '../res/rellenar.gif'
         corazon.estado = 'rellenando'
+        corazon.parentNode.title = 'Borrar equipo de favoritos'
         let username = JSON.parse(sessionStorage.getItem('active')).username
         add_favorite(parseInt(equipoId), username)
         msg.textContent = 'Equipo añadido a favoritos'
