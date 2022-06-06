@@ -50,32 +50,34 @@
 
                                     <h2 class="fw-bold text-uppercase" style="margin-bottom: 15%;">Inicio Sesion</h2>
 
+                                    <form>
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="typeEmailX">Nombre de usuario</label>
+                                            <input type="text" id="username" class="form-control form-control-lg" />
+                                            <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                                id="userError">Porfavor introduzca el nombre de usuario</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typeEmailX">Nombre de usuario</label>
-                                        <input type="text" id="username" class="form-control form-control-lg" />
-                                        <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                            id="userError">Porfavor introduzca el nombre de usuario</label>
-                                    </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="typePasswordX">Contraseña</label>
+                                            <input type="password" id="password" class="form-control form-control-lg" />
+                                            <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                                id="passError">Porfavor introduzca la contraseña</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typePasswordX">Contraseña</label>
-                                        <input type="password" id="password" class="form-control form-control-lg" />
                                         <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
-                                            id="passError">Porfavor introduzca la contraseña</label>
-                                    </div>
+                                            id="error">Usuario / Contraseña no encontrados</label>
 
-                                    <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
-                                        id="error">Usuario / Contraseña no encontrados</label>
-
-                                    <button class="btn btn-outline-light btn-lg px-5" id="enviar"
-                                        style="margin-top: 10%;" type="submit">Iniciar Sesion</button>
+                                        <button class="btn btn-outline-light btn-lg px-5" id="enviar"
+                                            style="margin-top: 10%;" type="submit">Iniciar Sesion</button>
+                                    </form>
+                                    
 
 
                                 </div>
 
                                 <div>
-                                    <p class="mb-0">¿Aún no tienes cuenta? <a href="registro.html"
+                                    <p class="mb-0 fs-4">¿Aún no tienes cuenta? <a href="registro.html"
                                             class="text-white-50 fw-bold">Regístrate</a>
                                     </p>
                                 </div>

@@ -49,34 +49,36 @@
 
                                     <h2 class="fw-bold text-uppercase" style="margin-bottom: 15%;">Registro</h2>
 
+                                    <form>
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="typeEmailX">Nombre de usuario</label>
+                                            <input type="text" id="username" class="form-control form-control-lg" />
+                                            <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                                id="userError">Porfavor introduzca el nombre de usuario</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typeEmailX">Nombre de usuario</label>
-                                        <input type="text" id="username" class="form-control form-control-lg" />
-                                        <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                            id="userError">Porfavor introduzca el nombre de usuario</label>
-                                    </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="typePasswordX">Contraseña</label>
+                                            <input type="password" id="password" class="form-control form-control-lg" />
+                                            <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                                id="passError">Porfavor introduzca la contraseña</label>
+                                        </div>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typePasswordX">Contraseña</label>
-                                        <input type="password" id="password" class="form-control form-control-lg" />
-                                        <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                            id="passError">Porfavor introduzca la contraseña</label>
-                                    </div>
+                                        <div class="form-outline form-white mb-4">
+                                            <label class="form-label" for="typePasswordX">Repite la contraseña</label>
+                                            <input type="password" id="password2" class="form-control form-control-lg" />
+                                            <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                                id="pass2Error">Porfavor vuelva a introducir la contraseña</label>
+                                        </div>
+                                        <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                            id="noigualesError">Las contraseñas no coinciden</label><br>
+                                        <label hidden class="fw-bold mt-2" style="color:rgb(255, 67, 67);"
+                                            id="existeError">El nombre de usuario ya existe</label>
 
-                                    <div class="form-outline form-white mb-4">
-                                        <label class="form-label" for="typePasswordX">Repite la contraseña</label>
-                                        <input type="password" id="password2" class="form-control form-control-lg" />
-                                        <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                            id="pass2Error">Porfavor vuelva a introducir la contraseña</label>
-                                    </div>
-                                    <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                        id="noigualesError">Las contraseñas no coinciden</label><br>
-                                    <label hidden class="fw_bold mt-2" style="color:rgb(255, 67, 67);"
-                                        id="existeError">El nombre de usuario ya existe</label>
-
-                                    <button class="btn btn-outline-light btn-lg px-5" id="enviar"
-                                        style="margin-top: 10%;" type="submit">Registrarse</button>
+                                        <button class="btn btn-outline-light btn-lg px-5" id="enviar"
+                                            style="margin-top: 10%;" type="submit">Registrarse</button>
+                                    </form>
+                                    
 
 
                                 </div>
