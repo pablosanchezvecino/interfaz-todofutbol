@@ -73,7 +73,7 @@ body {
       <button hidden id="dropdown" class="btn btn-dark mx-5 dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Favoritos </button>
       <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" href="#">Partidos</a></li>
-        <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
+        <li><a class="dropdown-item" href="../../equipo/equipos_favoritos.html">Equipos</a></li>
       </ul>
     </div>
     <div class="col-3 d-flex flex-wrap justify-content-end pe-5">
