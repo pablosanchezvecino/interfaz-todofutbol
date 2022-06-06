@@ -263,7 +263,7 @@ const ht = new Map();
           
           if(id!==undefined){
               console.log(id);
-              window.location.replace("equipo/equipo.html?teamId="+id);
+              window.location.replace("/equipo/equipo.html?teamId="+id);
           }else {
             alert("No se encuentra el equipo / competicion introducida");
           }
@@ -308,6 +308,38 @@ function autocomplete(inp, arr) {
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
+
+              id = ht.get(myInput.value);
+    
+              if(id==="PD"){
+                window.location.replace("../clasificaciones/laliga.html");
+              } else
+              if(id==="FL1"){
+                  window.location.replace("../clasificaciones/ligue-1.html");
+              } else
+              if(id==="PL"){
+                  window.location.replace("../clasificaciones/premier-league.html");
+              } else
+              if(id==="BL1"){
+                  window.location.replace("../clasificaciones/bundesliga.html");
+              }else
+              if(id==="SA"){
+                  window.location.replace("../clasificaciones/serie-a.html");
+              }else 
+          
+              if(id==="CL"){
+                  window.location.replace("../torneos/champions.html?competicion=CL");
+              }else 
+              if(id==="WC"){
+                  window.location.replace("../torneos/mundial.html?competicion=WC");
+              }else 
+              
+              if(id!==undefined){
+                  console.log(id);
+                  window.location.replace("/equipo/equipo.html?teamId="+id);
+              }else {
+                alert("No se encuentra el equipo / competicion introducida");
+              }
           });
           a.appendChild(b);
         }
@@ -333,9 +365,42 @@ function autocomplete(inp, arr) {
         /*If the ENTER key is pressed, prevent the form from being submitted,*/
         e.preventDefault();
         if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
+          //and simulate a click on the "active" item:
           if (x) x[currentFocus].click();
         }
+
+        id = ht.get(myInput.value);
+    
+        if(id==="PD"){
+          window.location.replace("../clasificaciones/laliga.html");
+        } else
+        if(id==="FL1"){
+            window.location.replace("../clasificaciones/ligue-1.html");
+        } else
+        if(id==="PL"){
+            window.location.replace("../clasificaciones/premier-league.html");
+        } else
+        if(id==="BL1"){
+            window.location.replace("../clasificaciones/bundesliga.html");
+        }else
+        if(id==="SA"){
+            window.location.replace("../clasificaciones/serie-a.html");
+        }else 
+    
+        if(id==="CL"){
+            window.location.replace("../torneos/champions.html?competicion=CL");
+        }else 
+        if(id==="WC"){
+            window.location.replace("../torneos/mundial.html?competicion=WC");
+        }else 
+        
+        if(id!==undefined){
+            console.log(id);
+            window.location.replace("/equipo/equipo.html?teamId="+id);
+        }else {
+          alert("No se encuentra el equipo / competicion introducida");
+        }
+
       }
   });
   function addActive(x) {
