@@ -35,6 +35,7 @@ if (equipos.length == 0) {
             const ahref = document.createElement('a')
             ahref.href = 'equipo.html?teamId=' + equipoId
             ahref.className = 'text-decoration-none'
+            ahref.title = equipo.name
             div.appendChild(ahref)
 
             const ul = document.createElement('ul')
