@@ -107,7 +107,20 @@ const login = document.getElementById("login");
 const logout = document.getElementById("logout");
 if(sessionStorage.getItem("active")!==null){
     login.href="";
-    login.textContent="Sesion iniciada";
+    username = JSON.parse(sessionStorage.getItem("active")).username;
+          if(username.length>=9){
+              shortUsername="";
+              for(i=0; i<=5; i++){
+                shortUsername+=username[i];
+              }
+              for(i=0; i<3; i++){
+                shortUsername+=".";
+              }
+              login.textContent="Bienvenido, "+shortUsername;
+              login.title="Bienvenido, "+username;
+          } else {
+              login.textContent="Bienvenido, "+username;
+          }
     logout.hidden=false;
 }
 
