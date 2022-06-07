@@ -128,7 +128,7 @@ logout.addEventListener("click", (e)=>{
     e.preventDefault();
     sessionStorage.removeItem("active");
     window.location.replace("../../pantalla_principal/pantalla_principal.html");
-    alert("Sesion cerrada");
+    alert("Sesión cerrada");
 
 })
 

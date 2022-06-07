@@ -129,7 +129,7 @@ document.write(`
           e.preventDefault();
           sessionStorage.removeItem("active");
           window.location.replace("pantalla_principal.html");
-          alert("Sesion cerrada");
+          alert("Sesión cerrada");
 
       })
 
