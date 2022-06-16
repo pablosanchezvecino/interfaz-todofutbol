@@ -43,7 +43,7 @@ function validar_login(username, password) {
         console.log("Logeado con éxito");
         sessionStorage.setItem("active", localStorage.getItem(username));
         window.location.replace("pantalla_principal/pantalla_principal.html");
-        alert("Sesion iniciada");
+        alert("Sesión iniciada");
     } else {
         console.log("Credenciales no válidas");
         error.hidden=false;
