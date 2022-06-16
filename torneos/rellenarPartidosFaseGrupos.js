@@ -1,6 +1,6 @@
 const grupoPartidos = new URLSearchParams(window.location.search).get('grupo')
 
-fetch('http://api.football-data.org/v2/competitions/' + competicion + '/matches?stage=GROUP_STAGE&group=' + grupoPartidos, {
+fetch('https://api.football-data.org/v2/competitions/' + competicion + '/matches?stage=GROUP_STAGE&group=' + grupoPartidos, {
     method: 'GET',
     headers: {
         'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'

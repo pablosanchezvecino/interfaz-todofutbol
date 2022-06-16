@@ -1,7 +1,7 @@
 const script_tag = document.getElementById('table-loader')
 const competition = script_tag.getAttribute("competition");
 
-fetch('http://api.football-data.org/v2/competitions/' +
+fetch('https://api.football-data.org/v2/competitions/' +
     competition +
     '/standings', {
     method: 'GET',

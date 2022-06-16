@@ -8,7 +8,7 @@ const porteros = document.getElementById("porteros")
 asistentes.style.visibility = 'hidden'
 porteros.style.visibility = 'hidden'
 
-fetch('http://api.football-data.org/v2/competitions/' +
+fetch('https://api.football-data.org/v2/competitions/' +
     competition +
     '/scorers', {
     method: 'GET',

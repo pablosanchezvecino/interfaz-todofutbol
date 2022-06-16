@@ -1,6 +1,6 @@
 const competicion = new URLSearchParams(window.location.search).get('competicion')
 
-fetch('http://api.football-data.org/v2/competitions/'+competicion+'/standings', {
+fetch('https://api.football-data.org/v2/competitions/'+competicion+'/standings', {
     method: 'GET',
     headers: {
         'X-Auth-Token': 'f663af7b882a413081471f3e80db5ab6'

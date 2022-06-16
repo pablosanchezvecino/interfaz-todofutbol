@@ -37,7 +37,7 @@ function get_favorites(username) {
 
 }
 
-fetch('http://api.football-data.org/v2/teams/' + equipoId, {
+fetch('https://api.football-data.org/v2/teams/' + equipoId, {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
@@ -162,7 +162,7 @@ function cambiaEstado(corazon, msg) {
 }
 
 function cargaPartidos(competicion) {
-    fetch('http://api.football-data.org/v2/teams/' + equipoId + '/matches/?competitions=' + competicion + '&dateFrom=2021-08-12&dateTo=2023-05-30', {
+    fetch('https://api.football-data.org/v2/teams/' + equipoId + '/matches/?competitions=' + competicion + '&dateFrom=2021-08-12&dateTo=2023-05-30', {
         method: 'GET',
         headers: {
             'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'

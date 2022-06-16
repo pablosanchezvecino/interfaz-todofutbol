@@ -3,7 +3,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const partido_id = urlParams.get('partido_id');
 
-fetch('http://api.football-data.org/v2/matches/' + partido_id, {
+fetch('https://api.football-data.org/v2/matches/' + partido_id, {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'

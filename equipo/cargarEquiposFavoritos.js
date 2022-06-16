@@ -14,7 +14,7 @@ if (equipos.length == 0) {
 } else {
     equipos.forEach(equipoId => {
         // Buscar equipo en la api
-        fetch('http://api.football-data.org/v2/teams/' + equipoId, {
+        fetch('https://api.football-data.org/v2/teams/' + equipoId, {
             method: 'GET',
             headers: {
                 'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
