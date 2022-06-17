@@ -17,9 +17,9 @@ fetch('https://api.football-data.org/v2/competitions/' + competition + '/matches
             
             const row = document.getElementById('row')
             
-            const aviso = document.createElement('h2')
-            aviso.className = 'border-top pt-3 text-blue'
-            aviso.style = "color: blue"
+            const aviso = document.createElement('h3')
+            aviso.className = 'border-top pt-3'
+            
             aviso.textContent = 'No hay partidos programados en este momento'
 
             row.appendChild(aviso)
