@@ -49,12 +49,14 @@ body {
 <header class="container-fluid text-bg-dark px-2 py-2 ">
   
 <div class="row d-flex flex-wrap align-items-center">
-    <div class="col-2">
-          
-      <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
-    </div>
-    
-  <!--<h2 class="col-3">TodoFutbol</h2>-->
+<div class="col-4">
+
+<a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
+  <img src="res/logo.png" height="50" style="vertical-align: middle;" />
+  <span class="ms-1 align-middle m-0 p-0 fs-1" style="vertical-align: middle;">TodoFutbol</span>
+</a>
+
+</div>
     <div class="col-4 busqueda">
         <div class="input-group">
           <input autocomplete="off type="search" id="myInput" class="form-control" placeholder="Introduce equipo o competición..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
