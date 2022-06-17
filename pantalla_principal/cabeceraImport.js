@@ -63,7 +63,7 @@ document.write(`
         <!--<h2 class="col-3">TodoFutbol</h2>-->
           <div class="col-4 busqueda">
             <div class="input-group" id="form">
-              <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o liga..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
+              <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o competición..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
               <button type="submit" class="btn btn-outline-secondary fs-5" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff">Buscar</button>
             </div>
           </div>
