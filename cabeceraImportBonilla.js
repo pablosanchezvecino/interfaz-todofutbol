@@ -105,18 +105,18 @@ document.write(`
       if(sessionStorage.getItem("active")!==null){
           login.href="";
           username = JSON.parse(sessionStorage.getItem("active")).username;
-          if(username.length>=9){
+          if(username.length>=13){
               shortUsername="";
-              for(i=0; i<=5; i++){
+              for(i=0; i<=9; i++){
                 shortUsername+=username[i];
               }
               for(i=0; i<3; i++){
                 shortUsername+=".";
               }
-              login.textContent="Bienvenido, "+shortUsername;
-              login.title="Bienvenido, "+username;
+              login.textContent=shortUsername;
+              login.title=username;
           } else {
-              login.textContent="Bienvenido, "+username;
+              login.textContent=username;
           }
           logout.hidden=false;
       }
