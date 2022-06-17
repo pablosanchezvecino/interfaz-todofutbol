@@ -51,7 +51,7 @@ body {
 <div class="row d-flex flex-wrap align-items-center">
 <div class="col-4">
             <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
-              <img src="../res/logo.png" height="50" style="vertical-align: middle;" />
+              <img src="./res/logo.png" height="50" style="vertical-align: middle;" />
               <span class="ms-1 align-middle m-0 p-0 fs-1" style="vertical-align: middle;">TodoFutbol</span>
             </a>
           </div>
@@ -66,8 +66,8 @@ body {
 
           <div class="col-2">
 
-          <a hidden id="dropdown" class="btn btn-dark" href="../equipo/equipos_favoritos.html" style="vertical-align: middle;">
-            <img src="../res/icono-favoritos.png" height="50" style="vertical-align: middle;" />
+          <a hidden id="dropdown" class="btn btn-dark" href="./equipo/equipos_favoritos.html" style="vertical-align: middle;">
+            <img src="./res/icono-favoritos.png" height="50" style="vertical-align: middle;" />
             <span class=" align-middle m-0 p-0 fs-5" style="vertical-align: middle;">Favoritos </span>
           </a>
   
