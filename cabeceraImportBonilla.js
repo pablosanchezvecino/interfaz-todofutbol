@@ -50,7 +50,7 @@ document.write(`
         
     <div class="row d-flex flex-wrap align-items-center">
     <div class="col-4">
-            <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
+            <a class="btn btn-dark" href="../pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
               <img src="../res/logo.png" height="50" style="vertical-align: middle;" />
               <span class="ms-1 align-middle m-0 p-0 fs-1" style="vertical-align: middle;">TodoFutbol</span>
             </a>
