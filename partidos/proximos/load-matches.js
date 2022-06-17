@@ -4,7 +4,7 @@ const estadoPartidos = script_tag.getAttribute("status");
 
 
 
-fetch('https://api.football-data.org/v2/competitions/' + competition + '/matches?status=' + estadoPartidos, {
+fetch('https://api.football-data.org/v2/competitions/' + competition + '/matches?status=' + estadoPartidos + '&dateFrom=2022-06-19&dateTo=2022-07-01', {
     method: 'GET',
     headers: {
         'X-Auth-Token': '68ce06e3eae1416ab29dd79b83831cc8'
