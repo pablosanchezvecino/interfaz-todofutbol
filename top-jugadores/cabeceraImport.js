@@ -50,41 +50,39 @@ body {
   
 <div class="row d-flex flex-wrap align-items-center">
 <div class="col-4">
+            <a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
+              <img src="../res/logo.png" height="50" style="vertical-align: middle;" />
+              <span class="ms-1 align-middle m-0 p-0 fs-1" style="vertical-align: middle;">TodoFutbol</span>
+            </a>
+          </div>
 
-<a class="btn btn-dark" href="pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
-  <img src="res/logo.png" height="50" style="vertical-align: middle;" />
-  <span class="ms-1 align-middle m-0 p-0 fs-1" style="vertical-align: middle;">TodoFutbol</span>
-</a>
+          <div class="col-4 busqueda">
+            <div class="input-group" id="form">
+              <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o competición..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
+              <button type="submit" class="btn btn-outline-secondary fs-5" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff">Buscar</button>
+            </div>
+          </div>
 
-</div>
-    
-      
-  <!--<h2 class="col-3">TodoFutbol</h2>-->
-    <div class="col-4 busqueda">
-        <div class="input-group">
-          <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o competición..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
-          <button class="btn btn-outline-secondary" id="busqueda" style="border-top-left-radius: 0; border-bottom-left-radius: 0; --bs-btn-color: #ffffff ">Buscar</button>
+
+          <div class="col-2">
+
+          <a hidden id="dropdown" class="btn btn-dark" href="../equipo/equipos_favoritos.html" style="vertical-align: middle;">
+            <img src="../res/icono-favoritos.png" height="50" style="vertical-align: middle;" />
+            <span class=" align-middle m-0 p-0 fs-5" style="vertical-align: middle;">Favoritos </span>
+          </a>
+  
+  
         </div>
-    </div>
-
-
-    <div class="col-1">
-      <button hidden id="dropdown" class="btn btn-dark dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Favoritos </button>
-      <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Partidos</a></li>
-        <li><a class="dropdown-item" href="../equipo/equipos_favoritos.html">Equipos</a></li>
-      </ul>
-    </div>
-    <div class="col-3 d-flex flex-wrap justify-content-end pe-5">
-        <!--<input type="button" aria-describedby="login" class="form-control">-->
-        <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Acceder</a>
-        <button hidden class="input-group-text" id="logout" title="Cerrar sesión">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
-            <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-          </svg>
-        </button>
-    </div>
+          <div class="col-2 d-flex flex-wrap justify-content-end pe-5">
+              
+              <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html">Acceder</a>
+              <button hidden class="input-group-text" id="logout" title="Cerrar sesión">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                </svg>
+              </button>
+          </div>
 </div>
   
 </header>
