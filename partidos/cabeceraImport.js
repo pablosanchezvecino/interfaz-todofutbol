@@ -6,7 +6,7 @@ document.write(`
 }
 
 body {
-  font: 16px Arial;  
+  font: 16px Arial;
 }
 
 
@@ -25,19 +25,19 @@ body {
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
-  background-color: rgb(0, 0, 0); 
-  border-bottom: 1px solid #d4d4d4; 
+  background-color: rgb(0, 0, 0);
+  border-bottom: 1px solid #d4d4d4;
 }
 
 /*when hovering an item:*/
 .autocomplete-items div:hover {
-  background-color: #504e4e; 
+  background-color: #504e4e;
 }
 
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
-  background-color: #504e4e !important; 
-  color: #ffffff; 
+  background-color: #504e4e !important;
+  color: #ffffff;
 }
 
 .busqueda {
@@ -47,7 +47,7 @@ body {
 </style>
 
 <header class="container-fluid text-bg-dark px-2 py-2 ">
-  
+
 <div class="row d-flex flex-wrap align-items-center">
 <div class="col-4">
             <a class="btn btn-dark" href="../../pantalla_principal/pantalla_principal.html" style="vertical-align: middle;">
@@ -66,15 +66,15 @@ body {
 
           <div class="col-2">
 
-          <a hidden id="dropdown" class="btn btn-dark" href="../equipo/equipos_favoritos.html" style="vertical-align: middle;">
-            <img src="../res/icono-favoritos.png" height="50" style="vertical-align: middle;" />
+          <a hidden id="dropdown" class="btn btn-dark" href="../../equipo/equipos_favoritos.html" style="vertical-align: middle;">
+            <img src="../../res/icono-favoritos.png" height="50" style="vertical-align: middle;" />
             <span class=" align-middle m-0 p-0 fs-5" style="vertical-align: middle;">Favoritos </span>
           </a>
-  
-  
+
+
         </div>
           <div class="col-2 d-flex flex-wrap justify-content-end pe-5">
-              
+
               <a class="btn btn-dark fs-5" id="login" aria-describedby="login" href="../login.html"><img class="me-2" src="../../res/icono-login.png" height="40"/>Acceder</a>
               <button hidden class="input-group-text" id="logout" title="Cerrar sesión">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -84,7 +84,7 @@ body {
               </button>
           </div>
 </div>
-  
+
 </header>
 
 
@@ -246,9 +246,9 @@ const ht = new Map();
       const relleno = document.getElementById("myInput");
 
       buscar.addEventListener("click", (e)=>{
-          
+
           id = ht.get(myInput.value);
-          
+
           if(id==="PD"){
             window.location.replace("../../clasificaciones/laliga.html");
           } else
@@ -263,15 +263,15 @@ const ht = new Map();
           }else
           if(id==="SA"){
               window.location.replace("../../clasificaciones/serie-a.html");
-          }else 
-      
+          }else
+
           if(id==="CL"){
               window.location.replace("../../torneos/champions.html?competicion=CL");
-          }else 
+          }else
           if(id==="WC"){
               window.location.replace("../../torneos/mundial.html?competicion=WC");
-          }else 
-          
+          }else
+
           if(id!==undefined){
               console.log(id);
               window.location.replace("../../equipo/equipo.html?teamId="+id);
@@ -321,7 +321,7 @@ function autocomplete(inp, arr) {
               closeAllLists();
 
               id = ht.get(myInput.value);
-    
+
               if(id==="PD"){
                 window.location.replace("../../clasificaciones/laliga.html");
               } else
@@ -336,15 +336,15 @@ function autocomplete(inp, arr) {
               }else
               if(id==="SA"){
                   window.location.replace("../../clasificaciones/serie-a.html");
-              }else 
-          
+              }else
+
               if(id==="CL"){
                   window.location.replace("../../torneos/champions.html?competicion=CL");
-              }else 
+              }else
               if(id==="WC"){
                   window.location.replace(".././torneos/mundial.html?competicion=WC");
-              }else 
-              
+              }else
+
               if(id!==undefined){
                   console.log(id);
                   window.location.replace("../../equipo/equipo.html?teamId="+id);
@@ -381,7 +381,7 @@ function autocomplete(inp, arr) {
         }
 
         id = ht.get(myInput.value);
-    
+
         if(id==="PD"){
           window.location.replace("../../clasificaciones/laliga.html");
         } else
@@ -396,15 +396,15 @@ function autocomplete(inp, arr) {
         }else
         if(id==="SA"){
             window.location.replace("../../clasificaciones/serie-a.html");
-        }else 
-    
+        }else
+
         if(id==="CL"){
             window.location.replace("../../torneos/champions.html?competicion=CL");
-        }else 
+        }else
         if(id==="WC"){
             window.location.replace(".././torneos/mundial.html?competicion=WC");
-        }else 
-        
+        }else
+
         if(id!==undefined){
             console.log(id);
             window.location.replace("../../equipo/equipo.html?teamId="+id);
@@ -446,11 +446,11 @@ document.addEventListener("click", function (e) {
 });
 }
 
-var opciones=["Real Madrid", "Barça", "Atlético de Madrid", "Sevilla", "Real Betis", "Real Sociedad", "Villareal", "Athletic", "Valencia", "Osasuna", 
+var opciones=["Real Madrid", "Barça", "Atlético de Madrid", "Sevilla", "Real Betis", "Real Sociedad", "Villareal", "Athletic", "Valencia", "Osasuna",
     "Celta", "Rayo Vallecano", "Elche", "Espanyol", "Getafe", "Cádiz", "Mallorca", "Granada", "Levante", "Alavés",
     "Manchester City", "Liverpool", "Chelsea", "Tottenham", "Arsenal", "Manchester United", "West Ham", "Leicester", "Brighton Hove", "Wolverhampton",
     "Newcastle", "Crystal Palace", "Brentford", "Aston Villa", "Southampton", "Everton", "Leeds", "Burnley", "Watford", "Norwich",
-    "Bayern München", "Dortmund", "Leverkusen", "Leipzig", "Union Berlin", "Freiburg", "Köln", "Mainz", "Hoffenheim", 
+    "Bayern München", "Dortmund", "Leverkusen", "Leipzig", "Union Berlin", "Freiburg", "Köln", "Mainz", "Hoffenheim",
     "Mönchengladbach", "Frankfurt", "Wolfsburg", "Bochum", "Augsburg", "Stuttgart", "Hertha", "Bielefeld", "Greuther Fürth",
     "PSG", "Marseille", "Monaco", "Nice", "Rennais", "Strasbourg", "Olympique Lion", "Lens", "Nantes", "Lille",
     "Brest", "Reims", "Montpellier", "Angers", "Troyes", "Lorient", "Clermont", "Saint-Étienne", "Metz", "Bordeaux",
