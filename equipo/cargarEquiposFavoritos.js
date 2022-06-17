@@ -9,6 +9,7 @@ const equipos = JSON.parse(sessionStorage.getItem('active')).favoriteTeams
 
 if (equipos.length == 0) {
     const msg = document.createElement('p')
+    msg.classList = "fs-3"
     msg.textContent = 'No sigues a ningún equipo'
     lista.appendChild(msg)
 } else {
