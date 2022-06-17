@@ -53,13 +53,7 @@ body {
           
       <a class="btn btn-dark" href="../../pantalla_principal/pantalla_principal.html"><h2>TodoFutbol</h2></a>  
     </div>
-    <div class="col-2">
-      <a class="btn btn-dark inline-block" style="vertical-align: middle;" href="../../pantalla_principal/pantalla_principal.html">
-        <img src="../../res/house.png" alt="Icono de casa" style="vertical-align: middle;">
-        <span class="fs-5 mx-2" style="vertical-align: middle;">Pantalla principal</span>
-      </a>
       
-    </div>  
     <div class="col-4 busqueda">
         <div class="input-group">
           <input autocomplete="off" type="search" id="myInput" class="form-control" placeholder="Introduce equipo o competición..." style="border-top-right-radius: 0; border-bottom-right-radius: 0 ">
